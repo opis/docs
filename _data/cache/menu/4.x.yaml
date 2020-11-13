@@ -1,0 +1,22 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Cache
+      url: "/cache/4.x/"
+      description: Installation, licensing and requirements
+    - title: How to use
+      url: "/cache/4.x/how-to-use.html"
+      description: Learn how you can use this library
+      
+- chapter: Cache drivers
+  pages:
+    - title: Provided drivers
+      url: "/cache/4.x/cache-drivers.html"
+      description: Cache drivers provided by the library
+    - title: Using existing drivers
+      url: "/cache/4.x/use-existing-drivers.html"
+      description: Learn how to use existing cache drivers
+    - title: Creating a new driver
+      url: "/cache/4.x/create-driver.html"
+      description: Create a custom cache driver

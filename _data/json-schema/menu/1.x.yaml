@@ -1,0 +1,107 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis JSON Schema
+      url: "/json-schema/1.x/"
+      description: Installation, licensing and requirements
+    - title: Quick start
+      url: "/json-schema/1.x/quick-start.html"
+      description: Some quick examples about how to use Opis JSON Schema
+      
+- chapter: The Basics
+  pages:
+    - title: Structure
+      page_title: JSON Schema structure
+      url: "/json-schema/1.x/structure.html"
+      description: Learn about the JSON Schema structure and its metadata keywords
+    - title: Generic keywords
+      url: "/json-schema/1.x/generics.html"
+      description: Generic validation keywords
+    - title: String type
+      url: "/json-schema/1.x/string.html"
+      description: Keywords for string type
+    - title: Number type
+      url: "/json-schema/1.x/number.html"
+      description: Keywords for number type
+    - title: Integer type
+      url: "/json-schema/1.x/integer.html"
+      description: Description for integer type
+    - title: Boolean type
+      url: "/json-schema/1.x/boolean.html"
+      description: Description for boolean type
+    - title: Null type
+      url: "/json-schema/1.x/null.html"
+      description: Description for null type
+    - title: Object type
+      url: "/json-schema/1.x/object.html"
+      description: Keywords for object type
+    - title: Array type
+      url: "/json-schema/1.x/array.html"
+      description: Keywords for array type
+    - title: Formats
+      url: "/json-schema/1.x/formats.html"
+      description: Default formats
+    - title: Default value
+      url: "/json-schema/1.x/default-value.html"
+      description: Default value keyword
+    - title: Conditional subschemas
+      url: "/json-schema/1.x/conditional-subschemas.html"
+      description: Keywords for applying conditional subschemas
+    - title: Multiple subschemas
+      url: "/json-schema/1.x/multiple-subschemas.html"
+      description: Keywords for applying multiple subschemas
+      
+- chapter: Reusability
+  pages:
+    - title: References
+      url: "/json-schema/1.x/ref-keyword.html"
+      description: "$ref keyword"
+    - title: Definitions
+      url: "/json-schema/1.x/definitions.html"
+      description: definitions keyword
+    - title: Pointers
+      url: "/json-schema/1.x/pointers.html"
+      description: Schema referencing
+      
+- chapter: Advanced features
+  pages:
+    - title: Variables
+      url: "/json-schema/1.x/variables.html"
+      description: "$vars keyword"
+    - title: URI Templates
+      url: "/json-schema/1.x/uri-template.html"
+      description: Using URI templates with $vars keyword
+    - title: Filters
+      url: "/json-schema/1.x/filters.html"
+      description: "$filters keyword"
+    - title: Mappers
+      url: "/json-schema/1.x/mappers.html"
+      description: "$map keyword"
+      
+- chapter: API
+  pages:
+    - title: Introduction
+      url: "/json-schema/1.x/php-intro.html"
+      description: API introduction
+    - title: Validator
+      url: "/json-schema/1.x/php-validator.html"
+      description: Validator object
+    - title: Validation result
+      url: "/json-schema/1.x/php-validation-result.html"
+      description: Validation result and errors
+    - title: Loader
+      url: "/json-schema/1.x/php-loader.html"
+      description: Loader object
+    - title: Filters
+      url: "/json-schema/1.x/php-filter.html"
+      description: Create a new json schema filter
+    - title: Formats
+      url: "/json-schema/1.x/php-format.html"
+      description: Create a new json schema format
+    - title: Media types
+      url: "/json-schema/1.x/php-media-type.html"
+      description: Create a new json schema media (MIME) type
+    - title: Schema structure
+      url: "/json-schema/1.x/php-schema.html"
+      description: Internal structure of a schema

@@ -1,0 +1,7 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Stream
+      url: "/stream/1.x/"
+      description: Installation, licensing and requirements

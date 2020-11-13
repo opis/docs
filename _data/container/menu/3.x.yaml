@@ -1,0 +1,10 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Container
+      url: "/container/3.x/"
+      description: Installation, licensing and requirements
+    - title: How to use it
+      url: "/container/3.x/how-to-use-it.html"
+      description: Learn how to use this library

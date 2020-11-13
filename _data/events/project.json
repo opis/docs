@@ -1,0 +1,19 @@
+{
+    "title": "Opis Events",
+    "library": "events",
+    "github": "https://github.com/opis/events",
+    "title_suffix": " | Opis Events",
+    "ga": true,
+    "brand": {
+        "title": "Opis Events",
+        "url": "/events"
+    },
+    "current_version": "5.x",
+    "versions": {
+        "5.x": {
+            "title": "Version 5.x",
+            "path": "/closure/5.x",
+            "unmaintained": false
+        }
+    }
+}

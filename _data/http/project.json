@@ -1,0 +1,19 @@
+{
+    "title": "Opis HTTP",
+    "library": "http",
+    "github": "https://github.com/opis/http",
+    "title_suffix": " | Opis HTTP",
+    "ga": true,
+    "brand": {
+        "title": "Opis HTTP",
+        "url": "https://opis.io/http"
+    },
+    "current_version": "3.x",
+    "versions": {
+        "3.x": {
+            "title": "Version 3.x",
+            "path": "/closure/3.x",
+            "unmaintained": false
+        }
+    }
+}

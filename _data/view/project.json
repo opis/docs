@@ -1,0 +1,19 @@
+{
+    "title": "Opis View",
+    "library": "view",
+    "github": "https://github.com/opis/view",
+    "title_suffix": " | Opis View",
+    "ga": true,
+    "brand": {
+        "title": "Opis View",
+        "url": "https://opis.io/view"
+    },
+    "current_version": "5.x",
+    "versions": {
+        "5.x": {
+            "title": "Version 5.x",
+            "path": "/view/5.x",
+            "unmaintained": false
+        }
+    }
+}

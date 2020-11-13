@@ -1,0 +1,7 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Session
+      url: "/session/4.x/"
+      description: Installation, licensing and requirements

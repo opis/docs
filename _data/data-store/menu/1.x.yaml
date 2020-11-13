@@ -1,0 +1,28 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Data Store
+      url: "/data-store/1.x/"
+      description: Installation, licensing and requirements
+
+- chapter: The basics
+  pages:
+    - title: How to use
+      url: "/data-store/1.x/how-to-use.html"
+      description: Learn how to use this library
+    - title: Creating drivers
+      url: "/data-store/1.x/drivers.html"
+      description: Creating a new driver
+
+- chapter: Drivers
+  pages:
+    - title: File
+      url: "/data-store/1.x/file-drivers.html"
+      description: Using file driver
+    - title: Memory
+      url: "/data-store/1.x/memory-driver.html"
+      description: Using memory driver
+    - title: Dual
+      url: "/data-store/1.x/dual-driver.html"
+      description: Using two drivers

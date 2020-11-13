@@ -1,0 +1,34 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis HTTP
+      url: "/http/3.x/"
+      description: Installation, licensing and requirements
+
+- chapter: The basics
+  pages:
+    - title: HTTP Messages
+      url: "/http/3.x/http-messages.html"
+      description: Learn about HTTP messages
+    - title: Requests
+      url: "/http/3.x/requests.html"
+      description: Learn how HTTP requests are represented
+    - title: Responses
+      url: "/http/3.x/responses.html"
+      description: Learn how HTTP responses are represented
+
+- chapter: In-depth
+  pages:
+    - title: Response types
+      url: "/http/3.x/response-types.html"
+      description: Learn about the provided HTTP response types
+    - title: Streams
+      url: "/http/3.x/streams.html"
+      description: Learn how we use streams
+    - title: File uploads
+      url: "/http/3.x/file-uploads.html"
+      description: Learn how to handle uploaded files
+    - title: URIs
+      url: "/http/3.x/uris.html"
+      description: Learn how we represent URIs

@@ -1,0 +1,46 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis ORM
+      url: "/orm/1.x/"
+      description: Installation, licensing and requirements
+    - title: Quick start
+      url: "/orm/1.x/quick-start.html"
+      description: Crash course to Opis ORM
+
+- chapter: Key concepts
+  pages:
+    - title: Entities
+      url: "/orm/1.x/entities.html"
+      description: Learn about entities
+    - title: Entity manager
+      url: "/orm/1.x/entity-manager.html"
+      description: The entity manager
+    - title: Query builder
+      url: "/orm/1.x/query-builder.html"
+      description: Query builder
+    - title: Data mapper
+      url: "/orm/1.x/data-mapper.html"
+      description: Learn how to use data mappers
+
+- chapter: Mapping
+  pages:
+    - title: Entity mapping
+      url: "/orm/1.x/entity-mapping.html"
+      description: Learn about entity mapping
+    - title: Column mapping
+      url: "/orm/1.x/column-mapping.html"
+      description: Learn how to map columns
+    - title: Other mappings
+      url: "/orm/1.x/other-mappings.html"
+      description: Learn about other mappings you can perform
+    - title: Relationships
+      url: "/orm/1.x/relationships.html"
+      description: Learn how to define relations
+
+- chapter: Good to know
+  pages:
+    - title: Eager loading
+      url: "/orm/1.x/eager-loading.html"
+      description: Learn how to optimize queries

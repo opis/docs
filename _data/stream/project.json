@@ -1,0 +1,18 @@
+{
+    "title": "Opis Stream",
+    "library": "stream",
+    "github": "https://github.com/opis/stream",
+    "title_suffix": " | Opis Stream",
+    "ga": true,
+    "brand": {
+        "title": "Opis Stream",
+        "url": "/routing"
+    },
+    "versions": {
+        "1.x": {
+            "title": "Version 1.x",
+            "path": "/stream/1.x",
+            "unmaintained": false
+        }
+    }
+}

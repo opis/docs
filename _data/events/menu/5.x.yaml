@@ -1,0 +1,22 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Events
+      url: "/events/5.x/"
+      description: Installation, licensing and requirements
+    - title: How to use
+      url: "/events/5.x/how-to-use.html"
+      description: Leran how to use the library
+      
+- chapter: In depth
+  pages:
+    - title: Event
+      url: "/events/5.x/event.html"
+      description: Event class and methods
+    - title: Event dispatcher
+      url: "/events/5.x/event-dispatcher.html"
+      description: EventDispatcher class and methods
+    - title: Custom event
+      url: "/events/5.x/custom-event.html"
+      description: Creating and dispatching custom events

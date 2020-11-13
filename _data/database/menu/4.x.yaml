@@ -1,0 +1,70 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Database
+      url: "/database/4.x/"
+      description: Installation, licensing and requirements
+    - title: Database connections
+      url: "/database/4.x/connections.html"
+      description: Learn how to connect to a database
+- chapter: The basics
+  pages:
+    - title: Fetching records
+      url: "/database/4.x/fetching-records.html"
+      description: Learn how to fetch records from a database
+    - title: Results handling
+      url: "/database/4.x/results-handling.html"
+      description: Learn how to handle the results set of a query
+    - title: Aggregate functions
+      url: "/database/4.x/aggregate-functions.html"
+      description: Learn about aggregate functions
+    - title: Fields selection
+      url: "/database/4.x/fields-selection.html"
+      description: Learn how to add fields to selection
+- chapter: Query builder
+  pages:
+    - title: Filters
+      url: "/database/4.x/filters.html"
+      description: Learn how to filter records
+    - title: Expressions
+      url: "/database/4.x/expressions.html"
+      description: Learn about expressions
+    - title: Ordering criteria
+      url: "/database/4.x/ordering-criteria.html"
+      description: Learn how to order results
+    - title: Limits and offsets
+      url: "/database/4.x/limits-and-offsets.html"
+      description: Learn about limits and offsets
+    - title: Joins
+      url: "/database/4.x/joins.html"
+      description: Learn how to perform joins
+    - title: Working with aggregates
+      url: "/database/4.x/aggregates-handling.html"
+      description: Learn how to work with aggregates
+- chapter: Other operations
+  pages:
+    - title: Insert records
+      url: "/database/4.x/insert-records.html"
+      description: Insert new records into a table
+    - title: Update records
+      url: "/database/4.x/update-records.html"
+      description: Learn how to update existing records
+    - title: Delete records
+      url: "/database/4.x/delete-records.html"
+      description: Learn how to delete existing records
+    - title: Transactions
+      url: "/database/4.x/transactions.html"
+      description: Learn how to use transactions
+- chapter: Database schema
+  pages:
+    - title: Introduction
+      page_title: Schema
+      url: "/database/4.x/schema.html"
+      description: Learn how to create and alter tables
+    - title: Creating tables
+      url: "/database/4.x/schema-creating-tables.html"
+      description: Learn how to create new tables
+    - title: Modifying tables
+      url: "/database/4.x/schema-modifying-tables.html"
+      description: Learn how to alter existing tables

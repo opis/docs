@@ -1,0 +1,19 @@
+{
+    "title": "Opis Cache",
+    "library": "cache",
+    "github": "https://github.com/opis/cache",
+    "title_suffix": " | Opis Cache",
+    "ga": true,
+    "brand": {
+        "title": "Opis Cache",
+        "url": "/cache"
+    },
+    "current_version": "4.x",
+    "versions": {
+        "4.x": {
+            "title": "Version 4.x",
+            "path": "/cache/4.x",
+            "unmaintained": false
+        }
+    }
+}

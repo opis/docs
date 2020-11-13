@@ -1,0 +1,28 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis String
+      url: "/string/1.x/"
+      description: Installation, licensing and requirements
+    - title: Quick start
+      url: "/string/1.x/quick-start.html"
+      description: Quick overview of the library
+      
+- chapter: Methods
+  pages:
+    - title: Meta information
+      url: "/string/1.x/meta-information.html"
+      description: Meta information methods
+    - title: Generic operations
+      url: "/string/1.x/operations.html"
+      description: Generic operation methods
+    - title: Search and compare
+      url: "/string/1.x/search-and-compare.html"
+      description: Search and compare methods
+    - title: Trimming and padding
+      url: "/string/1.x/trimming-and-padding.html"
+      description: Trimming and padding methods
+    - title: Conversion methods
+      url: "/string/1.x/conversion.html"
+      description: Conversion methods

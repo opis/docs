@@ -1,0 +1,19 @@
+{
+    "title": "Opis Container",
+    "library": "container",
+    "github": "https://github.com/opis/container",
+    "title_suffix": " | Opis Container",
+    "ga": true,
+    "brand": {
+        "title": "Opis Container",
+        "url": "https://opis.io/container"
+    },
+    "current_version": "3.x",
+    "versions": {
+        "3.x": {
+            "title": "Version 3.x",
+            "path": "/container/3.x",
+            "unmaintained": false
+        }
+    }
+}

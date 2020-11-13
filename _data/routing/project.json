@@ -1,0 +1,18 @@
+{
+    "title": "Opis Routing",
+    "library": "routing",
+    "github": "https://github.com/opis/routing",
+    "title_suffix": " | Opis Routing",
+    "ga": true,
+    "brand": {
+        "title": "Opis Routing",
+        "url": "/routing"
+    },
+    "versions": {
+        "5.x": {
+            "title": "Version 5.x",
+            "path": "/routing/5.x",
+            "unmaintained": false
+        }
+    }
+}

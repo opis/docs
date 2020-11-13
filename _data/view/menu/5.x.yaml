@@ -1,0 +1,19 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis View
+      url: "/view/5.x/"
+      description: Installation, licensing and requirements
+      
+- chapter: Key concepts
+  pages:
+    - title: Views
+      url: "/view/5.x/views.html"
+      description: Basic stuff about views
+    - title: View renderer
+      url: "/view/5.x/view-renderer.html"
+      description: Learn about view renderer
+    - title: Template engines
+      url: "/view/5.x/template-engines.html"
+      description: Presentation of template engines

@@ -1,0 +1,22 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Closure
+      url: "/closure/2.x/"
+      description: Installation, licensing and requirements
+    - title: Serialize closures
+      url: "/closure/2.x/serialize.html"
+      description: Learn how to serialize closures
+    - title: Features
+      url: "/closure/2.x/features.html"
+      description: The library's main features
+    - title: Serialization context
+      url: "/closure/2.x/context.html"
+      description: Learn about the serialization context
+    - title: Signed closures
+      url: "/closure/2.x/security.html"
+      description: Learn how to cryptographically sign your closures
+    - title: Debugging closures
+      url: "/closure/2.x/debug.html"
+      description: Learn how to debug serialized closures

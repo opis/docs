@@ -1,0 +1,24 @@
+{
+    "title": "Opis Closure",
+    "library": "closure",
+    "github": "https://github.com/opis/closure",
+    "title_suffix": " | Opis Closure",
+    "ga": true,
+    "brand": {
+        "title": "Opis Closure",
+        "url": "https://opis.io/closure"
+    },
+    "current_version": "3.x",
+    "versions": {
+        "2.x": {
+            "title": "Version 2.x",
+            "path": "/closure/2.x",
+            "unmaintained": true
+        },
+        "3.x": {
+            "title": "Version 3.x",
+            "path": "/closure/3.x",
+            "unmaintained": false
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "title": "Opis Session",
+    "library": "session",
+    "github": "https://github.com/opis/session",
+    "title_suffix": " | Opis Session",
+    "ga": true,
+    "brand": {
+        "title": "Opis Session",
+        "url": "/session"
+    },
+    "versions": {
+        "4.x": {
+            "title": "Version 4.x",
+            "path": "/session/4.x",
+            "unmaintained": false
+        }
+    }
+}

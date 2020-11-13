@@ -1,0 +1,19 @@
+{
+    "title": "Opis Data Store",
+    "library": "data-store",
+    "github": "https://github.com/opis/data-store",
+    "title_suffix": " | Opis Data Store",
+    "ga": true,
+    "brand": {
+        "title": "Opis Data Store",
+        "url": "/data-store"
+    },
+    "current_version": "1.x",
+    "versions": {
+        "1.x": {
+            "title": "Version 1.x",
+            "path": "/data-store/1.x",
+            "unmaintained": false
+        }
+    }
+}

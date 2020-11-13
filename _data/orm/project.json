@@ -1,0 +1,19 @@
+{
+    "title": "Opis ORM",
+    "library": "orm",
+    "github": "https://github.com/opis/orm",
+    "title_suffix": " | Opis ORM",
+    "ga": true,
+    "brand": {
+        "title": "Opis ORM",
+        "url": "https://opis.io/orm"
+    },
+    "current_version": "1.x",
+    "versions": {
+        "1.x": {
+            "title": "Version 1.x",
+            "path": "/orm/1.x",
+            "unmaintained": false
+        }
+    }
+}

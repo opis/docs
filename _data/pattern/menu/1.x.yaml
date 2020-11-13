@@ -1,0 +1,22 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Pattern
+      url: "/pattern/1.x/"
+      description: Installation, licensing and requirements
+    - title: Quick start
+      url: "/pattern/1.x/quick-start.html"
+      description: A simple router create with Opis Pattern
+      
+- chapter: Regex Builder
+  pages:
+    - title: Class and methods
+      url: "/pattern/1.x/regexbuilder.html"
+      description: RegexBuilder class methods
+    - title: Pattern components
+      url: "/pattern/1.x/pattern.html"
+      description: Pattern components
+    - title: Options
+      url: "/pattern/1.x/options.html"
+      description: Regex Builder options

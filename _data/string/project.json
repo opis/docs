@@ -1,0 +1,19 @@
+{
+    "title": "Opis String",
+    "library": "string",
+    "github": "https://github.com/opis/string",
+    "title_suffix": " | Opis String",
+    "ga": true,
+    "brand": {
+        "title": "Opis String",
+        "url": "https://opis.io/string"
+    },
+    "current_version": "1.x",
+    "versions": {
+        "1.x": {
+            "title": "Version 1.x",
+            "path": "/string/1.x",
+            "unmaintained": false
+        }
+    }
+}
