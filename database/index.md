@@ -8,7 +8,7 @@ ga: true
 project:
     title: Opis Database
     description: Database abstraction layer
-    docs_url: https://docs.opis.io/database/4.x
+    docs_url: /database/4.x/
     github: https://github.com/opis/database
     artwork: database
     license: Apache 2.0
