@@ -1,17 +1,17 @@
 ---
-layout: landing-project
+layout: project
 title: Opis Database | PHP Library
 description: A PHP library built around PDO, that provides a powerful query builder and an easy to use schema builder
-for MySQL, SQLite, PostgreSQL and other RDBMS
+    for MySQL, SQLite, PostgreSQL and other RDBMS
 canonical: /database/
 ga: true
 project:
-title: Opis Database
-description: Database abstraction layer
-docs_url: /database/4.x/
-github: https://github.com/opis/database
-artwork: database
-license: Apache 2.0
+    title: Opis Database
+    description: Database abstraction layer
+    docs_url: https://docs.opis.io/database/4.x
+    github: https://github.com/opis/database
+    artwork: database
+    license: Apache 2.0
 ---
 {% capture about_section %}
 Opis Database aims to provide a unified way of interacting with databases,

@@ -5,12 +5,12 @@ description: A PHP library that provides an object-oriented representation for h
 canonical: /http/
 ga: true
 project:
-title: Opis Http
-description: HTTP abstraction layer
-docs_url: /http/3.x/
-github: https://github.com/opis/http
-artwork: http
-license: Apache 2.0
+    title: Opis Http
+    description: HTTP abstraction layer
+    docs_url: /http/3.x/
+    github: https://github.com/opis/http
+    artwork: http
+    license: Apache 2.0
 ---
 {% capture about_section %}
 Opis Http helps developers to overcome PHP's lack of built-in support for HTTP messages,

@@ -5,12 +5,12 @@ description: An innovative rendering system that can be used with multiple PHP t
 canonical: /view/
 ga: true
 project:
-title: Opis View
-description: Innovative rendering system
-docs_url: /view/5.x/
-github: https://github.com/opis/view
-artwork: view
-license: Apache 2.0
+    title: Opis View
+    description: Innovative rendering system
+    docs_url: /view/5.x/
+    github: https://github.com/opis/view
+    artwork: view
+    license: Apache 2.0
 ---
 {% capture about_section %}
 Opis View is an innovating rendering system that takes a new approach when it comes to render HTML templates.

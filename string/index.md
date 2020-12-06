@@ -5,12 +5,12 @@ description: A PHP library that allows you to work with multibyte strings in an 
 canonical: /string/
 ga: true
 project:
-title: Opis String
-description: Multibyte strings as objects
-docs_url: /string/1.x/
-github: https://github.com/opis/string
-artwork: string
-license: Apache 2.0
+    title: Opis String
+    description: Multibyte strings as objects
+    docs_url: /string/1.x/
+    github: https://github.com/opis/string
+    artwork: string
+    license: Apache 2.0
 ---
 {% capture about_section %}
 Opis String is a tiny library that allows you to work with

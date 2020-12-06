@@ -5,12 +5,12 @@ description: A PHP library that makes closure serialization possible
 canonical: /closure/
 ga: true
 project:
-title: Opis Closure
-description: Serialize closures (anonymous functions)
-docs_url: /closure/3.x/
-github: https://github.com/opis/closure
-artwork: closure
-license: MIT
+    title: Opis Closure
+    description: Serialize closures (anonymous functions)
+    docs_url: /closure/3.x/
+    github: https://github.com/opis/closure
+    artwork: closure
+    license: MIT
 ---
 {% capture about_section %}
 Opis Closure helps you overcome PHP's limitations regarding closure serialization,

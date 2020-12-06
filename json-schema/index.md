@@ -2,16 +2,16 @@
 layout: landing-project
 title: Opis JSON Schema | PHP Library
 description: Opis JSON Schema is a PHP library, fully compliant with the latest JSON Schema specification
-that can be used to validate JSON documents
+    that can be used to validate JSON documents
 canonical: /json-schema/
 ga: true
 project:
-title: Opis JSON Schema
-description: Validate JSON documents
-docs_url: /json-schema/1.x/
-github: https://github.com/opis/json-schema
-artwork: schema
-license: Apache 2.0
+    title: Opis JSON Schema
+    description: Validate JSON documents
+    docs_url: /json-schema/1.x/
+    github: https://github.com/opis/json-schema
+    artwork: schema
+    license: Apache 2.0
 ---
 {% capture about_section %}
 The library implements the latest specification (<a href="http://json-schema.org/" target="_blank">draft-7</a>)

@@ -5,12 +5,12 @@ description: An easy to use and fully serializable dependency injection containe
 canonical: /container/
 ga: true
 project:
-title: Opis Container
-description: Dependency injection container
-docs_url: /container/3.x/
-github: https://github.com/opis/container
-artwork: container
-license: Apache 2.0
+    title: Opis Container
+    description: Dependency injection container
+    docs_url: /container/3.x/
+    github: https://github.com/opis/container
+    artwork: container
+    license: Apache 2.0
 ---
 {% capture about_section %}
 Opis Container provides a lightweight, fully serializable, dependency injection container, that

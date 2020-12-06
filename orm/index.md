@@ -5,12 +5,12 @@ description: A powerful new ORM library for PHP that is focused on productivity 
 canonical: /orm/
 ga: true
 project:
-title: Opis ORM
-description: Simple, productive and easy to learn
-docs_url: /orm/1.x/
-github: https://github.com/opis/orm
-artwork: orm
-license: Apache 2.0
+    title: Opis ORM
+    description: Simple, productive and easy to learn
+    docs_url: /orm/1.x/
+    github: https://github.com/opis/orm
+    artwork: orm
+    license: Apache 2.0
 ---
 {% capture about_section %}
 Opis ORM is a library that provides an implementation for the Data Mapper pattern,
