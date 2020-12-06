@@ -1,5 +1,5 @@
 ---
-layout: project
+layout: landing-project
 title: Opis Database | PHP Library
 description: A PHP library built around PDO, that provides a powerful query builder and an easy to use schema builder
     for MySQL, SQLite, PostgreSQL and other RDBMS
