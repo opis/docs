@@ -8,6 +8,7 @@
         "title": "Opis Routing",
         "url": "/routing"
     },
+    "abandoned": true,
     "versions": {
         "5.x": {
             "title": "Version 5.x",

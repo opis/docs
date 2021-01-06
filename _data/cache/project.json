@@ -8,6 +8,7 @@
         "title": "Opis Cache",
         "url": "/cache"
     },
+    "abandoned": true,
     "current_version": "4.x",
     "versions": {
         "4.x": {

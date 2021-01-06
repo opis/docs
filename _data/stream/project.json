@@ -8,6 +8,7 @@
         "title": "Opis Stream",
         "url": "/routing"
     },
+    "abandoned": true,
     "versions": {
         "1.x": {
             "title": "Version 1.x",

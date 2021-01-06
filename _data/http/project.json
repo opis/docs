@@ -8,6 +8,7 @@
         "title": "Opis HTTP",
         "url": "https://opis.io/http"
     },
+    "abandoned": true,
     "current_version": "3.x",
     "versions": {
         "3.x": {

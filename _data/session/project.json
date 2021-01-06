@@ -8,6 +8,7 @@
         "title": "Opis Session",
         "url": "/session"
     },
+    "abandoned": true,
     "versions": {
         "4.x": {
             "title": "Version 4.x",

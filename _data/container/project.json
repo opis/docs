@@ -8,6 +8,7 @@
         "title": "Opis Container",
         "url": "https://opis.io/container"
     },
+    "abandoned": true,
     "current_version": "3.x",
     "versions": {
         "3.x": {

@@ -8,6 +8,7 @@
         "title": "Opis Events",
         "url": "/events"
     },
+    "abandoned": true,
     "current_version": "5.x",
     "versions": {
         "5.x": {

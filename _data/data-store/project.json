@@ -8,6 +8,7 @@
         "title": "Opis Data Store",
         "url": "/data-store"
     },
+    "abandoned": true,
     "current_version": "1.x",
     "versions": {
         "1.x": {
