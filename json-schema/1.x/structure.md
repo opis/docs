@@ -247,7 +247,7 @@ in depth in the next chapters.
 | `[1, "a"]`{:.language-json} | *valid*{:.text-success.text-normal} |
 | `[-5.1, 10.8, 2]`{:.language-json} | *valid*{:.text-success.text-normal} |
 | `["a", "b", "c", "d", 4, 5]`{:.language-json} | *valid*{:.text-success.text-normal} |
-| `[1]` {:.language-json} | *invalid*{:.text-danger.text-normal} - must have at least 2 items |
+| `[1]`{:.language-json} | *invalid*{:.text-danger.text-normal} - must have at least 2 items |
 | `["a", {"x": 1}]`{:.language-json} | *invalid*{:.text-danger.text-normal} - contains an object |
 | `{"0": 1, "1": 2}`{:.language-json} | *invalid*{:.text-danger.text-normal} - not an array |
 {:.table}
