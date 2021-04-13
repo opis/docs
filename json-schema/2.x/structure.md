@@ -17,7 +17,7 @@ and tells you the validation status.
 
 ## Data types
 
-Because json schema is written in JSON format, it supports all JSON
+Because JSON Schema is written in JSON format, it supports all JSON
 types plus an addition: the integer type, which is a subtype of the number type.
 
 - `string` - represents a string/text, e.g. `"a string"`{:.language-json}, `"other string"`{:.language-json}

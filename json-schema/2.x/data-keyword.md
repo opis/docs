@@ -24,7 +24,7 @@ allow arbitrary content inside a schema this keyword is restricted to the follow
 
 To use this keyword you must replace the value of the original keyword 
 with an object having the following structure `{"$data": "json-pointer"}`.
-The value of the keyword will dynamically resolve to the value extracted by the [json pointer](pointers.html).
+The value of the keyword will dynamically resolve to the value extracted by the [JSON pointer](pointers.html).
 
 {% capture schema %}
 ```json

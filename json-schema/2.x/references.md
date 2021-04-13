@@ -8,10 +8,10 @@ keywords: opis, json, schema, validation, reference, $ref
 ---
 
 Remember when we mentioned about the `$id` keyword in the [JSON Schema Structure](structure.html#id-keyword)?
-Now is time to use that `$id` for something. As we said, a json schema document
+Now is time to use that `$id` for something. As we said, a JSON Schema document
 can be identified by an unique id. 
 
-Consider that we have two json schema documents:
+Consider that we have two JSON Schema documents:
 one validates a custom email address and the other one validates an user which must
 have that custom email address. In order to reuse the custom email validator
 we make a reference to it by using the `$ref` keyword. Let's see how it will look.

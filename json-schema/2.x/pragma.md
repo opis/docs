@@ -52,7 +52,7 @@ The value must be a positive integer.
 ## cast
 
 Converts current value by applying a cast. The value must be 
-a string representing a [json data type name](structure.html#data-types) (except `null`).
+a string representing a [JSON data type name](structure.html#data-types) (except `null`).
 
 ```json
 {

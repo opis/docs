@@ -22,7 +22,7 @@ You can disable $filters keyword by setting the [`allowFilters` option](php-load
 
 ## General structure
 
-In a json schema document, `$filters` can be: 
+In a JSON Schema document, `$filters` can be: 
 a string, an object or an array of strings and objects.
 
 If your filter doesn't need any arguments (besides the value that is validated)
@@ -126,7 +126,7 @@ Arguments
 
 #### data-exists
 
-Checks if the current value is a json pointer that can resolve the data.
+Checks if the current value is a JSON pointer that can resolve the data.
 
 Arguments
 

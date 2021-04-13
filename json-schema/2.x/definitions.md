@@ -102,7 +102,7 @@ And from here, descending into `custom-email` gives us
 }
 ```
 
-Now, this is the value given by our json pointer.
+Now, this is the value given by our JSON pointer.
 
 ## Examples
 

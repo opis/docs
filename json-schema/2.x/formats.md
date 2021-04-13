@@ -36,7 +36,7 @@ usually different data types have different formats.
 
 ## Provided formats
 
-Opis JSON Schema provides all the formats for `string` type defined in json schema specifications.
+Opis JSON Schema provides all the formats for `string` type defined in the JSON Schema specifications.
 You can also [add your own formats](php-format.html).
 
 Please note that formats starting with `idn-` or `iri` require [PHP intl extension](http://php.net/manual/en/book.intl.php){:rel="nofollow" target="_blank"} 
