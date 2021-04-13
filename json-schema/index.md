@@ -14,8 +14,8 @@ project:
     license: Apache 2.0
 ---
 {% capture about_section %}
-The library implements the latest specification (<a href="http://json-schema.org/" target="_blank">draft-7</a>)
-of the JSON Schema standard and provides a comprehensive documentation
+The library implements the latest specifications (draft-2020-12, draft-2019-09, draft-07 and draft-06)
+of the <a href="http://json-schema.org/" target="_blank">JSON Schema</a> standard and provides a comprehensive documentation
 that covers both the standard itself and the library's own API.
 {% endcapture %}
 {% include section/lead.html
