@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/null.html
+version: 2.x
 title: Null type
 description: php opis json schema validation of null type
 keywords: opis, php, json, schema, null, validation

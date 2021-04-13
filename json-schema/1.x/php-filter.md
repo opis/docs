@@ -2,6 +2,7 @@
 layout: project
 library: json-schema
 version: 1.x
+canonical: /json-schema/2.x/php-filter.html
 title: Creating Opis JSON Schema filters
 description: the opis json schema validation using custom filters
 keywords: opis, json, schema, validation, filter
@@ -70,7 +71,7 @@ Here is an example of schema that uses our modulo filter
   "$filters": {
     "$func": "modulo",
     "$vars": {
-      "divider": 4,
+      "divisor": 4,
       "reminder": 3
     }
   }

@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/pointers.html
+version: 2.x
 title: Json Pointers
 description: using absolute and relative json pointers in opis json schema
 keywords: opis, json, schema, validation, pointer, relative, absolute, $ref
@@ -69,7 +68,7 @@ Consider the following json schema document
 {
   "$id": "http://example.com/schema.json#",
   
-  "definitions": {
+  "$defs": {
     "name": {
       "type": "string",
       "minLength": 1
@@ -95,13 +94,13 @@ the desired schemas.
 |---------|-------|
 | `http://example.com/schema.json#` | _the document itself_ |
 | `http://example.com/schema.json#/` | _the document itself_ |
-| `http://example.com/schema.json#/definitions/name` | `{"type": "string", "minLength": 1}`{:.language-json} |
-| `http://example.com/schema.json#/definitions/personal/email` | `{"type": "string", "format": "email"}`{:.language-json} |
-| `http://example.com/schema.json#/definitions/personal/birthday` | `{"type": "string", "format": "date"}`{:.language-json} |
+| `http://example.com/schema.json#/$defs/name` | `{"type": "string", "minLength": 1}`{:.language-json} |
+| `http://example.com/schema.json#/$defs/personal/email` | `{"type": "string", "format": "email"}`{:.language-json} |
+| `http://example.com/schema.json#/$defs/personal/birthday` | `{"type": "string", "format": "date"}`{:.language-json} |
 | `http://example.com/schema.json#/inexistent/path` | *error*{:.text-danger.text-normal} |
 {:.table}
 
-Now lets see a complex example that uses the [`$ref` keyword](ref-keyword.html#ref).
+Now lets see a complex example that uses the [`$ref` keyword](references.html#ref).
 
 ```json
 {
@@ -110,26 +109,26 @@ Now lets see a complex example that uses the [`$ref` keyword](ref-keyword.html#r
   "type": "object",
   "properties": {
     "email": {
-      "$ref": "#/definitions/personal/email"
+      "$ref": "#/$defs/personal/email"
     },
     "birthday": {
-      "$ref": "#/definitions/personal/birthday"
+      "$ref": "#/$defs/personal/birthday"
     },
     "settings": {
-      "$ref": "user-settings.json#/definitions/settings"
+      "$ref": "user-settings.json#/$defs/settings"
     },
     "info": {
       "$ref": "../info.json#"
     },
     "root": {
-      "$ref": "/other/path/to/schema.json#/definitions/root"
+      "$ref": "/other/path/to/schema.json#/$defs/root"
     },
     "external": {
-      "$ref": "http://external.example.com/some-schema.json#/definitions/name"
+      "$ref": "http://external.example.com/some-schema.json#/$defs/name"
     }
   },
   
-  "definitions": {
+  "$defs": {
     "personal": {
       "email": {
         "type": "string",
@@ -153,26 +152,27 @@ the `properties` keyword.
 
 | Property name | Resolved $ref |
 |---------|-------|
-| email | `http://example.com/path/to/user.json#/definitions/personal/email` |
-| birthday | `http://example.com/path/to/user.json#/definitions/personal/birthday` |
-| settings | `http://example.com/path/to/user-settings.json#/definitions/settings` |
+| email | `http://example.com/path/to/user.json#/$defs/personal/email` |
+| birthday | `http://example.com/path/to/user.json#/$defs/personal/birthday` |
+| settings | `http://example.com/path/to/user-settings.json#/$defs/settings` |
 | info | `http://example.com/path/info.json#` |
-| root | `http://example.com/other/path/to/schema.json#/definitions/root` |
-| external | `http://external.example.com/some-schema.json#/definitions/name` |
+| root | `http://example.com/other/path/to/schema.json#/$defs/root` |
+| external | `http://external.example.com/some-schema.json#/$defs/name` |
 {:.table.table-striped}
 
 These are the steps in order to perform validation for __email__ property
 
-1. Get the value of `$ref` => `#/definitions/personal/email`
-2. Get the absolute URI, using `$id` as base => `http://example.com/path/to/user.json#/definitions/personal/email`
+1. Get the value of `$ref` => `#/$defs/personal/email`
+2. Get the absolute URI, using `$id` as base => `http://example.com/path/to/user.json#/$defs/personal/email`
 3. Load the schema document having the `$id` equal to `http://example.com/path/to/user.json` (in this case it is the same document)
-4. Apply the json pointer `/definitions/personal/email` to get the subschema => `{"type": "string", "format": "email"}`
+4. Apply the json pointer `/$defs/personal/email` to get the subschema => `{"type": "string", "format": "email"}`
 5. Use the subschema for validation (in our case we validate the value of _email_ property)
 
 ## Relative pointers
 
 Relative json pointers are used to search for values starting at the _current_
 location. We can go upwards by specifying the numbers of levels to ascend,
+we can optionally change index position,
 and then we can go downwards by using a pointer composed by multiple property names (keys) separated
 by `/` (slash). The level and the pointer are also separated by `/` (slash).
 Additionally, we can append `#` which will return the property name (key)
@@ -234,6 +234,7 @@ we have the following table
 | `1/name` | `"environment friendly"`{:.language-json} |
 | `2#` | `"features"`{:.language-json} |
 | `2/0` | `"easy to use"`{:.language-json} |
+| `1-1` | `"easy to use"`{:.language-json} |
 | `2/0#` | `0`{:.language-json} (array index) |
 | `3` | _the document itself (root)_ |
 | `3/price` | `10.5`{:.language-json} |
@@ -243,7 +244,7 @@ we have the following table
 | `4` | *error*{:.text-danger.text-normal} |
 {:.table}
 
-You can find more details about the structure of relative json pointers [here](https://tools.ietf.org/html/draft-luff-relative-json-pointer-00){:target="_blank"}.
+You can find more details about the structure of relative json pointers [here](http://json-schema.org/draft/2020-12/relative-json-pointer.html){:target="_blank"}.
 
 ### Using relative pointers
 
@@ -251,7 +252,7 @@ You can use absolute JSON pointers to fetch data/subschemas defined in the docum
 You cannot use relative pointers in the way you use [absolute pointers](#absolute-pointers),
 so you cannot use them in an URI.
 
-Here is an example using the [`$ref` keyword](ref-keyword.html).
+Here is an example using the [`$ref` keyword](references.html#ref).
 
 {% capture schema %}
 ```json

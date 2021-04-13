@@ -2,6 +2,7 @@
 layout: project
 library: json-schema
 version: 1.x
+canonical: /json-schema/2.x/references.html
 title: JSON Schema references ($ref)
 description: using opis json schema $ref keyword to reuse schema by references 
 keywords: opis, json, schema, validation, reference, $ref

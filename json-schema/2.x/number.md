@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/number.html
+version: 2.x
 title: Number type
 description: php opis json schema validation of numbers, integer and float
 keywords: opis, php, json, schema, number, validation, integer, float
@@ -35,6 +34,8 @@ in the presented order. All keywords are optional.
 
 ### minimum
 
+{% include drafts.html v="all" %}
+
 A number is valid against this keyword if is greater than, or equal to, the
 value of this keyword. 
 Value of this keyword must be a number (integer or float).
@@ -61,6 +62,8 @@ Valid if the number is at least `10.5`.
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
 ### exclusiveMinimum
+
+{% include drafts.html v="all" %}
 
 A number is valid against this keyword if is strictly greater than the
 value of this keyword. Value of this keyword must be a number (integer or float)
@@ -113,6 +116,8 @@ Valid if the number is greater than `10.5`.
 
 ### maximum
 
+{% include drafts.html v="all" %}
+
 A number is valid against this keyword if is lower than, or equal to, the
 value of this keyword. 
 Value of this keyword must be a number (integer or float).
@@ -139,6 +144,8 @@ Valid if the number is at most `10.5`.
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
 ### exclusiveMaximum
+
+{% include drafts.html v="all" %}
 
 A number is valid against this keyword if is strictly lower than the
 value of this keyword. Value of this keyword must be a number (integer or float)
@@ -190,6 +197,8 @@ Valid if the number is lower than `10.5`.
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
 ### multipleOf
+
+{% include drafts.html v="all" %}
 
 A number is valid against this keyword if the division between the
 number and the the value of this keyword results in an integer.

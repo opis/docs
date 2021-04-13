@@ -2,6 +2,7 @@
 layout: project
 library: json-schema
 version: 1.x
+canonical: /json-schema/2.x/php-validator.html
 title: Opis JSON Schema ValidationResult Object
 description: the opis json schema validation result object and errors
 keywords: opis, json, schema, validation, validator, result, error

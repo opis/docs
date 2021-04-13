@@ -2,6 +2,7 @@
 layout: project
 library: json-schema
 version: 1.x
+canonical: /json-schema/2.x/filters.html
 title: Filters ($filters)
 description: using custom filters in json schema to validate data
 keywords: opis, json, schema, filter, $filters, validation

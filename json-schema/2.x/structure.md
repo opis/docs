@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/structure.html
+version: 2.x
 title: JSON Schema structure
 description: JSON Schema structure and metadata
 keywords: opis, php, json, schema, validation, structure, metadata
@@ -93,14 +92,16 @@ The value of this keyword must be a string representing an URI.
 
 Currently the supported URIs are:
 
-- `http://json-schema.org/draft-07/schema#` - latest version 
-- `http://json-schema.org/draft-06/schema#` - previous version
+- `https://json-schema.org/draft/2020-12/schema` - latest version 
+- `https://json-schema.org/draft/2019-09/schema` - previous version 
+- `http://json-schema.org/draft-07/schema#`
+- `http://json-schema.org/draft-06/schema#`
 
 This keyword is not required and if it is missing, the URI of the 
 latest schema version will be used instead.
 
-The only difference between draft 06 and draft 07 is that draft 06 does not
-support [if-then-else keywords](conditional-subschemas.html#if-then-else). 
+Not all keywords all available on all drafts, so we recommend using this keyword to set the right context.
+{:.alert.alert-warning data-title="Important"}
 
 ## *$id* keyword
 
@@ -111,11 +112,56 @@ It is not a required keyword, but we recommend you using it, as a  best practice
 
 The usage of this keyword will be covered in the next chapters.
 
+## *$anchor* keyword
+
+This keyword is used to define fragment identifiers.
+
+The two schemas below are equivalent.
+
+{% capture anchor %}
+```json
+{
+ "$id": "http://example.com",
+ 
+ "$ref": "#mail",
+ 
+ "$defs": {
+  "mail": {
+   "$anchor": "mail",
+   "format": "email"
+  }
+ }
+}
+```
+{% endcapture %}
+{% capture id %}
+```json
+{
+ "$id": "http://example.com",
+
+ "$ref": "#mail",
+ 
+ "$defs": {
+  "mail": {
+   "$id": "#mail",
+   "format": "email"
+  }
+ }
+}
+```
+{% endcapture %}
+{% include tabs.html 1="$anchor" 2="$id" _1=anchor _2=id %}
+
+
 ## *definitions* keyword
 
 This keyword does not directly validate data, but it contains a map
 of validation schemas. The value of this keyword can be anything.
 This keyword is not required.
+
+## *$defs* keyword
+
+Same as `definitions` keyword (standardized staring with draft-2019-09).
 
 ## Metadata keywords
 
@@ -129,7 +175,7 @@ keyword must be a string.
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://example.com/number.json#",
   "title": "Test if it is a number",
   
@@ -144,7 +190,7 @@ keyword must be a string.
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://example.com/number.json#",
   "title": "Test if it is a number",
   "description": "A data is considered number if it is an integer or a float.",
@@ -160,7 +206,7 @@ an array.
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://example.com/number.json#",
   "title": "Test if it is a number",
   "description": "A data is considered a number if is an integer or a float.",
@@ -185,8 +231,7 @@ Contains an observation about the schema. The value of this keyword must be a st
 
 ## JSON Schema examples
 
-For most of the basic examples we will not use `$schema`, `$id` and metadata keywords,
-but when writing schemas it is recommended to use at least the `$id` keyword.
+For most of the basic examples we will not use `$schema`, `$id` and metadata keywords.
 {:.alert.alert-info data-title="Remember"}
 
 Don't worry if you don't exactly understand every keyword, they are presented

@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/uri-template.html
+version: 2.x
 title: Opis JSON Schema URI Templates
 description: about uri templates using opis json schema validation
 keywords: opis, json, schema, validation, uri, template, variable
@@ -24,7 +23,7 @@ values to get an URI reference that will be used further. Here is an example:
 ```
 
 Above, we have two placeholders `{folder}` and `{file}`, which will be replaced with
-the corresponding values from the `$vars` keyword (`{folder}` => `"user"`, `{file}` => `"schema"`),
+the corresponding values from the [`$vars` keyword](variables.html) (`{folder}` => `"user"`, `{file}` => `"schema"`),
 resulting the final URI `http://example.com/user/schema.json`.
 
 More details about the structure of uri templates can be found [here](https://tools.ietf.org/html/rfc6570){:target="_blank"}.

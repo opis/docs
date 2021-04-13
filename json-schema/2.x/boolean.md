@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/boolean.html
+version: 2.x
 title: Boolean type
 description: php opis json schema validation of boolean type
 keywords: opis, php, json, schema, boolean

@@ -1,18 +1,17 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/
+version: 2.x
 title: About
 description: About Opis JSON Schema validation in PHP
 keywords: opis, json, schema, validation, php, about
 lib: 
     name: opis/json-schema
-    version: 1.0
+    version: 2.0
 ---
 
 **Opis JSON Schema** is a PHP implementation for the [JSON Schema](http://json-schema.org/){:target="_blank"}
-standard (draft-07 and draft-06), that will help you validate all sorts of JSON documents, 
+standard (draft-2020-12, draft-2019-09, draft-07 and draft-06), that will help you validate all sorts of JSON documents, 
 whether they are configuration files or a set of data sent to an RESTful API endpoint.
 
 ## Features
@@ -22,9 +21,9 @@ whether they are configuration files or a set of data sent to an RESTful API end
 - Supports relative and absolute [json pointers](pointers.html)
 - Support for local and global [variables](variables.html)
 - Advanced schema reuse with [mappers](mappers.html)
-- Support for custom formats
-- Support for custom media types
-- Support for default value
+- Intuitive schema composition using [slots](slots.html)
+- Support for [`$data` keyword](data-keyword.html) 
+- Support for custom formats and media types
 - And, of course, all the json schema keywords
 
 ## License
@@ -33,7 +32,7 @@ whether they are configuration files or a set of data sent to an RESTful API end
 
 ## Requirements
 
-* PHP 7.0 or higher
+* PHP 7.4 or higher (PHP 8 is recommended)
 
 ## Installation
 
@@ -62,7 +61,8 @@ On this site you can find documentation about json schema itself and about [the 
 
 - Document keywords:
 [$schema](structure.html#schema-keyword),
-[$id](structure.html#id-keyword)
+[$id](structure.html#id-keyword),
+[$anchor](structure.html#anchor-keyword)
 - Metadata keywords:
 [title](structure.html#title),
 [description](structure.html#description),
@@ -74,8 +74,12 @@ On this site you can find documentation about json schema itself and about [the 
 [enum](generics.html#enum),
 [format](formats.html),
 [default](default-value.html),
-[definitions](definitions.html),
-[$ref](ref-keyword.html)
+[definitions / $defs](definitions.html),
+[$ref](references.html#ref),
+[$recursiveRef](references.html#recursiveref),
+[$recursiveAnchor](references.html#recursiveanchor),
+[$dynamicRef](references.html#dynamicref),
+[$dynamicAnchor](references.html#dynamicanchor)
 - Conditionals: 
 [not](conditional-subschemas.html#not), 
 [if-then-else](conditional-subschemas.html#if-then-else),
@@ -87,7 +91,8 @@ On this site you can find documentation about json schema itself and about [the 
 [maxLength](string.html#maxlength),
 [pattern](string.html#pattern),
 [contentEncoding](string.html#contentencoding),
-[contentMediaType](string.html#contentencoding) 
+[contentMediaType](string.html#contentencoding),
+[contentSchema](string.html#contentschema) 
 - Number/Integer keywords:
 [minimum](number.html#minimum),
 [exclusiveMinimum](number.html#exclusiveminimum),
@@ -98,22 +103,30 @@ On this site you can find documentation about json schema itself and about [the 
 [properties](object.html#properties),
 [required](object.html#required),
 [dependencies](object.html#dependencies),
+[dependentRequired](object.html#dependentrequired),
+[dependentSchemas](object.html#dependentschemas),
 [minProperties](object.html#minproperties),
 [maxProperties](object.html#maxproperties),
 [propertyNames](object.html#propertynames),
 [patternProperties](object.html#patternproperties),
-[additionalProperties](object.html#additionalproperties)
+[additionalProperties](object.html#additionalproperties),
+[unevaluatedProperties](object.html#unevaluatedproperties)
 - Array keywords:
 [minItems](array.html#minitems),
 [maxItems](array.html#maxitems),
 [uniqueItems](array.html#uniqueitems),
 [contains](array.html#contains),
+[minContains](array.html#mincontains),
+[maxContains](array.html#maxcontains),
 [items](array.html#items),
-[additionalItems](array.html#additionalitems)
+[additionalItems](array.html#additionalitems),
+[unevaluatedItems](array.html#unevaluateditems)
 - Extra keywords:
 [$vars](variables.html),
-[$filters](filters.html) (including [$func](filters.html))
-[$map](mappers.html) (including [$each](mappers.html#mapping-arrays-using-each))
+[$filters](filters.html) (including [$func](filters.html)),
+[$map](mappers.html) (including [$each](mappers.html#mapping-arrays-using-each)),
+[$slots / $inject](slots.html),  
+[$pragma](pragma.html)  
 
 ### Schema structure
 

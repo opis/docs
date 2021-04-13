@@ -1,14 +1,13 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/variables.html
+version: 2.x
 title: Variables ($vars)
 description: using variables in json schema
 keywords: opis, json, schema, variables, $vars
 ---
 
-Variables are a non-standard addition to tackle
+Variables provide a new way to tackle
 different scenarios where json schema alone fails.
 This means, that you can use a new keyword named `$vars`
 to make your life easier.
@@ -22,11 +21,6 @@ to make your life easier.
 
 In a json schema document, `$vars` must be an object but 
 the values inside `$vars` can be anything.
-
-
-`$vars` keyword support is enabled by default, 
-to disable it use `Opis\JsonSchema\Validator::varsSupport(false)`{:.language-php}.
-{:.alert.alert-info data-title="Important"}
 
 Example of `$vars`:
 
@@ -52,7 +46,10 @@ because you can access the current data being validated using
 [json pointers](pointers.html).
 
 To do this, you will reference a value in the same way you reference
-other schemas: by using `$ref` keyword.
+other schemas: by using `$ref` keyword. 
+If the `$ref` cannot be resolved, an error is thrown.
+You can prevent this by adding a fallback value 
+using the `default` keyword next to the `$ref` keyword.
 
 Take a look at the next example:
 
@@ -60,7 +57,10 @@ Take a look at the next example:
 {
   "$vars": {
     "value-of-prop-a": {"$ref": "/a"},
-    "secret-value": {"$ref": "/deep/secret"},
+    "secret-value": {
+      "$ref": "/deep/secret", 
+      "default": "if /deep/secret points to nothing this is the fallback value"
+    },
     "some-constant": 5
   }
 }
@@ -162,6 +162,9 @@ keywords including [$filters](filters.html) if needed. Also, use URI template
 escaping mechanisms.
 {:.alert.alert-warning data-title="Important"}
 
+You can disable uri-templates by setting the [`allowTemplates` option](php-loader.html#parser-options) to `false`.
+{:.alert.alert-info data-title="Remember"}
+
 Here is an example that validates a number by using number's type.
 
 ```json
@@ -235,10 +238,13 @@ the steps for validating the `value` property are:
 ## Global variables
 
 Depending on your project, sometimes you'll want certain variables
-to always be available when validating. 
-To do so you must pass them to [validator](php-validator.html) before validating,
- by using `Opis\JsonSchema\Validator::setGlobalVars()`.
-To see current list of global variables use `Opis\JsonSchema\Validator::getGlobalVars()`.
+to always be available when validating. Usually, global variables are set from PHP,
+but you can override global variables before referencing another schema by
+using the `$globals` keyword.
+
+You can disable $globals keyword by setting the [`allowGlobals` option](php-loader.html#parser-options) to `false`.
+{:.alert.alert-info data-title="Remember"}
+
 
 ### Global variables example
 
@@ -260,6 +266,12 @@ To see current list of global variables use `Opis\JsonSchema\Validator::getGloba
             "$vars": {
                 "version": 5
             }
+        },
+        "prop-d": {
+            "$ref": "http://example.com/vendor/{VENDOR_VERSION}/d.json",
+            "$globals": {
+                "VENDOR_VERSION": "3.0"
+            }
         }
     }
 }
@@ -280,4 +292,5 @@ the `$ref`s will be
 | `prop-a` | `http://example.com/vendor/1.0/a.json` | **global** variable `VENDOR_VERSION` is `1.0` |
 | `prop-b` | `http://example.com/vendor/2.0/b.json` | **local** variable `VENDOR_VERSION` is `2.0` |
 | `prop-c` | `http://example.com/vendor/1.0/c.json` | **global** variable `VENDOR_VERSION` is `1.0` and there is no local variable `VENDOR_VERSION` |
+| `prop-d` | `http://example.com/vendor/1.0/d.json` | **global** variable `VENDOR_VERSION` is `1.0` and there is no local variable `VENDOR_VERSION`. However, inside the referenced schema the value of `VENDOR_VERSION` will be set to `3.0` |
 {:.table.table-striped}

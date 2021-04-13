@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/string.html
+version: 2.x
 title: String type
 description: php opis json schema validation of string and text containing unicode characters
 keywords: opis, php, json, schema, string, text, validation, pattern, regex, mime, base64
@@ -10,17 +9,6 @@ keywords: opis, php, json, schema, string, text, validation, pattern, regex, mim
 
 The `string` type is used for validating strings/texts containing
 Unicode characters.
-
-Please note that in order to calculate the length of a string,
-Opis JSON Schema uses the following libraries/functions, 
-depending which one is available on your system: 
-[Opis String](https://github.com/opis/string){:target="_blank"} 
-(recommended, add it with `composer require opis/string`),
-[mb_strlen](http://php.net/manual/en/function.mb-strlen.php){:target="_blank"}
-(you must enable [mb_string](http://php.net/manual/en/book.mbstring.php){:target="_blank"} extension for PHP),
-[strlen](http://php.net/manual/en/function.strlen.php){:target="_blank"} 
-(will not always return the correct length of a string with Unicode characters).
-{:.alert.alert-info data-title="Important"}
 
 {% capture schema %}
 ```json
@@ -46,6 +34,8 @@ The following keywords are supported by the `string` type, and evaluated
 in the presented order. All keywords are optional.
 
 ### minLength
+
+{% include drafts.html v="all" %}
 
 A string is valid against this keyword if its length is greater then, 
 or equal to, the value of this keyword. 
@@ -73,6 +63,8 @@ Valid if contains at least `3` characters.
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
 ### maxLength
+
+{% include drafts.html v="all" %}
 
 A string is valid against this keyword if its length is lower then, 
 or equal to, the value of this keyword. 
@@ -102,13 +94,15 @@ Valid if contains at most `3` characters.
 
 ### pattern
 
+{% include drafts.html v="all" %}
+
 A string is valid against this keyword if it matches the regular expression
 specified by the value of this keyword.
 Value of this keyword must be a string representing a valid regular
 expression.
 
 Please note that the delimiter used by Opis JSON Schema is `\x07` (bell)
-and the modifier is `u` ([PCRE_UTF8](http://php.net/manual/en/reference.pcre.pattern.modifiers.php){:target="_blank"}).
+and the modifier is `uD` ([PCRE_UTF8 & PCRE_DOLLAR_ENDONLY](http://php.net/manual/en/reference.pcre.pattern.modifiers.php){:target="_blank"}).
 {:.alert.alert-info data-title="Important"}
 
 
@@ -116,7 +110,7 @@ and the modifier is `u` ([PCRE_UTF8](http://php.net/manual/en/reference.pcre.pat
 ```json
 {
   "type": "string",
-  "pattern": "^opis\\/[a-z-]+$"
+  "pattern": "^opis/[a-z-]+$"
 }
 ```
 
@@ -141,13 +135,21 @@ For more information about PHP regular expressions, you can read about
 
 ### contentEncoding
 
+{% include drafts.html v="*all" %}
+
 A string is valid against this keyword if it is encoded using the
 method indicated by the value of this keyword. 
 Value of this keyword must be a string.
 
-Currently, there can only be two values for this keyword
+<sup>*</sup> You should enable this keyword for your draft 
+by setting the [`decodeContent` option](php-loader.html#parser-options).
+
+Currently, there can only be three values for this keyword
 - `binary` - any string is valid
 - `base64` - the string must be a valid base64 encoded string
+- `quoted-printable` - string must be a valid quoted printable text
+
+If you want to add new content encodings, please read about [Content Encodings](php-content-encoding.html).
 
 {% capture schema %}
 ```json
@@ -171,15 +173,20 @@ Valid if contains only characters inside the base64 alphabet.
 
 ### contentMediaType
 
+{% include drafts.html v="*all" %}
+
 A string is valid against this keyword if its content has the media type
 (MIME type) indicated by the value of this keyword.
 If the `contentEncoding` keyword is also specified, then the decoded content
 must have the indicated media type.
 Value of this keyword must be a string.
 
-Out of the box, Opis JSON Schema comes with the following media types
-- `text/plain` - any text
-- `application/json` - json encoded string
+<sup>*</sup> You should enable this keyword for your draft
+by setting the [`decodeContent` option](php-loader.html#parser-options).
+
+Out of the box, Opis JSON Schema knows how to detect `application/json` and for other media
+types it uses [finfo class](https://www.php.net/manual/en/class.finfo.php){:target="blank"}
+as a detector.
 
 If you want to add new media types (MIME types), please read about [Media Types](php-media-type.html).
 
@@ -231,3 +238,39 @@ content contains valid JSON syntax.
 {% endcapture %}
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
+### contentSchema
+
+{% include drafts.html v="*2019-09, *2020-12" %}
+
+A string is valid against this keyword if its content has the `application/json` media type
+and the decoded content validates against the schema indicated by this keyword.
+If the `contentEncoding` keyword is also specified, then the decoded content
+is validated against this keyword.
+Value of this keyword must be a valid json schema (object or boolean).
+
+<sup>*</sup> You should enable this keyword for your draft
+by setting the [`decodeContent` option](php-loader.html#parser-options).
+
+{% capture schema %}
+```json
+{
+  "type": "string",
+  "contentSchema": {
+    "type": "object",
+    "required": ["name", "age"]
+  }
+}
+```
+Valid if the string contains a valid JSON encoded string that validates against the schema when decoded.
+{:.blockquote-footer}
+{% endcapture %}
+{% capture examples %}
+|Input|Status|
+|-----|------|
+| `"{\"name\": \"Opis\", \"age\": 50}"`{:.language-json} | *valid*{:.text-success.text-normal}|
+| `"1-2-3"`{:.language-json} | *invalid*{:.text-danger.text-normal} - invalid json |
+| `"[]"`{:.language-json} | *invalid*{:.text-danger.text-normal} - not an object |
+| `"{\"name\": \"Opis\"}"`{:.language-json} | *invalid*{:.text-danger.text-normal} - `age` property is missing |
+{:.table}
+{% endcapture %}
+{% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}

@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/conditional-subschemas.html
+version: 2.x
 title: Applying subschemas conditionally
 description: php opis json schema applying subschemas conditionally
 keywords: opis, php, json, schema, conditional, subschema, if then else
@@ -17,6 +16,8 @@ The following keywords are supported by any instance type, and are evaluated in
 the presented order. All keywords are optional.
 
 ### not
+
+{% include drafts.html v="all" %}
 
 An instance is valid against this keyword if is **not** valid against 
  the schema defined by the value of this keyword. 
@@ -63,6 +64,8 @@ This schema will never validate
 {:.blockquote-footer}
 
 ### if-then-else
+
+{% include drafts.html v="07, 2019-09, 2020-12" %}
 
 This is a conditional structure containing three keywords: `if`, `then` and `else`.
 Every keyword value must be a valid json schema (object or boolean).

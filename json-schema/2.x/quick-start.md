@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/quick-start.html
+version: 2.x
 title: Quick start
 description: A short overview of the Opis JSON Schema library and of the JSON Schema standard
 keywords: opis, json, schema, validation, quick start
@@ -56,8 +55,8 @@ The validation schema that follows these rules, looks something like bellow.
 
 ```json
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://api.example.com/profile.json#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "http://api.example.com/profile.json",
     "type": "object",
     "properties": {
     },
@@ -240,8 +239,8 @@ Now that we have finished defining validation rules, let's put all together and 
 
 ```json
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://api.example.com/profile.json#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "http://api.example.com/profile.json",
     "type": "object",
     "properties": {
         "name": {
@@ -326,29 +325,42 @@ Now that we have finished defining validation rules, let's put all together and 
 
 Believe it or not, the PHP part is the most trivial part of the validation process.
 Once we have the validation schema, we can save it into a file like `schema.json` and
-start validating the content of `$data`.
+start validating the content of `$data` variable.
 
 ```php
 use Opis\JsonSchema\{
-    Validator, ValidationResult, ValidationError, Schema
+    Validator,
+    ValidationResult,
+    Errors\ErrorFormatter,
 };
 
-
-$data = json_decode($data);
-$schema = Schema::fromJsonString(file_get_contents('/path/to/schema.json'));
-
+// Create a new validator
 $validator = new Validator();
 
+// Register our schema
+$validator->resolver()->registerFile(
+    'http://api.example.com/profile.json', 
+    '/path/to/schema.json'
+);
+
+$data = <<<'JSON'
+{
+    "name": "John Doe",
+    "age": 15,
+    ... rest of the properties
+}
+JSON;
+
+// Decode $data
+$data = json_decode($data);
+
 /** @var ValidationResult $result */
-$result = $validator->schemaValidation($data, $schema);
+$result = $validator->validate($data, 'http://api.example.com/profile.json');
 
 if ($result->isValid()) {
-    echo '$data is valid', PHP_EOL;
+    echo "Valid", PHP_EOL;
 } else {
-    /** @var ValidationError $error */
-    $error = $result->getFirstError();
-    echo '$data is invalid', PHP_EOL;
-    echo "Error: ", $error->keyword(), PHP_EOL;
-    echo json_encode($error->keywordArgs(), JSON_PRETTY_PRINT), PHP_EOL;
+    // Print errors
+    print_r((new ErrorFormatter())->format($result->error()));
 }
 ```

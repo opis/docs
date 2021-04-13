@@ -14,6 +14,11 @@
             "title": "Version 1.x",
             "path": "/json-schema/1.x",
             "unmaintained": false
+        },
+        "2.x": {
+            "title": "Version 2.x",
+            "path": "/json-schema/2.x",
+            "unmaintained": false
         }
     }
 }

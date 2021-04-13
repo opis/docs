@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/mappers.html
+version: 2.x
 title: Mappers ($map)
 description: reusing json schema using data mappers
 keywords: opis, json, schema, validation, mapper, $map, reuse
@@ -89,9 +88,9 @@ to be converted to
 }
 ```
 
-before beeing sent to `standard-user.json` for validation.
+before being sent to `standard-user.json` for validation.
 
-We can do that thanks to a new non-standard keyword named `$map`,
+We can do that thanks to a new keyword named `$map`,
 designed for advanced schema reuse.
 
 And to solve our problem we only need to prepend the following
@@ -117,10 +116,6 @@ In a json schema document, `$map` is evaluated like [$vars](variables.html),
 the difference is that `$map` can also be an array (`$vars` can only be an object)
 and can only be used in conjunction with `$ref`.
 
-`$map` keyword is enabled by default, to disable it use `Opis\JsonSchema\Validator::mapSupport(false)`.
-Also, please note that `$map` will not work if `$vars` support is disabled.
-{:.alert.alert-info}
-
 Example for `$map`
 
 ```json
@@ -136,7 +131,7 @@ Example for `$map`
 
 In the above example, before the current data is passed to
 `some-ref.json` it is processed by `$map`, so in the end it will
-look somthing like
+look something like
 
 ```json
 {
@@ -146,6 +141,8 @@ look somthing like
 }
 ```
 
+You can disable $map keyword by setting the [`alowMappers` option](php-loader.html#parser-options) to `false`.
+{:.alert.alert-info data-title="Remember"}
 
 ## Mapping arrays using $each
 

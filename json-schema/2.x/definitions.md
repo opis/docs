@@ -1,38 +1,41 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/definitions.html
+version: 2.x
 title: JSON Schema definitions
 description: using opis json schema $ref keyword to reuse internal definitions 
-keywords: opis, json, schema, validation, reference, definitions, $ref
+keywords: opis, json, schema, validation, reference, definitions, $ref, $defs
 ---
 
 There are cases when you want to reuse validations that are specific only to
-that schema document. For example, we have a custom email validator, and
+that schema document, or you simply want to group multiple sub-schemas together. 
+For example, we have a custom email validator, and
 a custom username validator, and we want to apply those validators multiple
-times. Outside the schema document these validators aren't useful. 
-This can be easily achieved using [`$ref` keyword](ref-keyword.html)
-and the [`definitions` keyword](#definitions).
+times.
+This can be easily achieved using [`$ref` keyword](references.html#ref)
+and the `$defs` keyword. 
+
+In drafts 06 and 07 `$defs` keyword was named `definitions`, this has changed starting with draft 2019-09.
+Don't worry, `definitions` can still be used (you can use any name, it doesn't really matter).
 
 {% capture schema %}
 ```json
 {
   "type": "object",
   "properties": {
-    "username": {"$ref": "#/definitions/custom-username"},
+    "username": {"$ref": "#/$defs/custom-username"},
     "aliases": {
       "type": "array",
-      "items": {"$ref": "#/definitions/custom-username"}
+      "items": {"$ref": "#/$defs/custom-username"}
     },
-    "primary_email": {"$ref": "#/definitions/custom-email"},
+    "primary_email": {"$ref": "#/$defs/custom-email"},
     "other_emails": {
       "type": "array",
-      "items": {"$ref": "#/definitions/custom-email"}
+      "items": {"$ref": "#/$defs/custom-email"}
     }
   },
   
-  "definitions": {
+  "$defs": {
     "custom-username": {
       "type": "string",
       "minLength":3
@@ -61,19 +64,19 @@ and the [`definitions` keyword](#definitions).
 
 
 Ok, let's see what happens there. The confusing thing is the value of the
-`$ref` keyword, which is something like this `#/definitions/something`.
+`$ref` keyword, which is something like this `#/$defs/something`.
 That's an URI fragment (starts with `#`), and the rest of the string after
 the `#` represents a [JSON pointer](pointers.html). JSON pointers are
 covered in the [next](pointers.html) chapter, but we still explain
  the behaviour in a few words, using our example.
 
-Consider this json pointer `/definitions/custom-email`. Because the
+Consider this json pointer `/$defs/custom-email`. Because the
 pointer starts with `/` (slash) we know that we begin at the root of
 the schema document. Every substring delimited by a `/` slash, will
 be used as property name (key) to descend. In our case we have two
-substrings: `definitions` and `custom-email`. 
+substrings: `$defs` and `custom-email`. 
 
-Descending into `definitions` gives us
+Descending into `$defs` gives us
 
 ```json
 {
@@ -114,11 +117,11 @@ Now, this is the value given by our json pointer.
       "type": "string"
     },
     "personal_data": {
-      "$ref": "#/definitions/personal"
+      "$ref": "#/$defs/personal"
     }
   },
    
-  "definitions": {
+  "$defs": {
     "email": {
       "type": "string",
       "format": "email"    
@@ -127,7 +130,7 @@ Now, this is the value given by our json pointer.
       "type": "object",
       "properties": {
         "mail": {
-          "$ref": "#/definitions/email"
+          "$ref": "#/$defs/email"
         }
       }
     }
@@ -156,11 +159,11 @@ Now, this is the value given by our json pointer.
       "type": "string"
     },
     "best_friend": {
-      "$ref": "#/definitions/friend"
+      "$ref": "#/$defs/friend"
     }
   },
   
-  "definitions": {
+  "$defs": {
     "friend": {
       "type": "object",
       "properties": {
@@ -170,7 +173,7 @@ Now, this is the value given by our json pointer.
         "friends": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/friend"
+            "$ref": "#/$defs/friend"
           }
         }
       }

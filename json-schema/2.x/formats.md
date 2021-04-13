@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/formats.html
+version: 2.x
 title: Formats
 description: php opis json schema formats
 keywords: opis, php, json, schema, formats, date, time, email
@@ -38,8 +37,9 @@ usually different data types have different formats.
 ## Provided formats
 
 Opis JSON Schema provides all the formats for `string` type defined in json schema specifications.
+You can also [add your own formats](php-format.html).
 
-Please note that formats starting with `idn-` or `iri` require [PHP intl extension](http://php.net/manual/en/book.intl.php){:target="_blank"} 
+Please note that formats starting with `idn-` or `iri` require [PHP intl extension](http://php.net/manual/en/book.intl.php){:rel="nofollow" target="_blank"} 
 in order to work correctly.
 {:.alert.alert-info data-title="Important"}
 
@@ -438,6 +438,29 @@ A string is valid against this format if it represents a valid IRI reference.
 | `"#ƒrägmênt"`{:.language-json} | *valid*{:.text-success.text-normal} |
 | `"http://ƒøø.com/blah_(wîkïpédiå)_blah#ßité-1"`{:.language-json} | *valid*{:.text-success.text-normal} |
 | `"\\\\WINDOWS\\filëßåré"`{:.language-json} | *invalid*{:.text-danger.text-normal} |
+{:.table}
+{% endcapture %}
+{% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
+
+### uuid
+
+A string instance is valid against this attribute if it is a valid string representation of a UUID.
+
+{% capture schema %}
+```json
+{
+    "type": "string",
+    "format": "uuid"
+}
+```
+{% endcapture %}
+{% capture examples %}
+|Input|Status|
+|-----|------|
+| `"2EB8AA08-AA98-11EA-B4AA-73B441D16380"`{:.language-json} | *valid*{:.text-success.text-normal} |
+| `"2eb8aa08-aa98-11ea-b4aa-73b441d16380"`{:.language-json} | *valid*{:.text-success.text-normal} |
+| `"2GB8AA08-AA98-11EA-B4AA-73B441D16380"`{:.language-json} | *invalid*{:.text-danger.text-normal} - invalid char `G` |
+| `"2eb8aa08aa9811eab4aa73b441d16380"`{:.language-json} | *invalid*{:.text-danger.text-normal} - no dashes |
 {:.table}
 {% endcapture %}
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}

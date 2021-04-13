@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/object.html
+version: 2.x
 title: Object type
 description: php opis json schema validation of objects
 keywords: opis, php, json, schema, object, validation
@@ -30,12 +29,12 @@ The `object` type is used for validating key-value maps (objects).
 
 ## Validation keywords
 
-The following keywords are supported by the `object` type, and evaluated
-in the following order: `required`, `dependencies`, `minProperties`, `maxProperties`,
-`propertyNames`, `properties`, `patternProperties`, `additionalProperties`. 
+The following keywords are supported by the `object` type.
 All keywords are optional.
 
 ### properties
+
+{% include drafts.html v="all" %}
 
 An object is valid against this keyword if every property
 that is present in both the object and the value of this keyword,
@@ -78,6 +77,8 @@ integer, if present.
 
 ### required
 
+{% include drafts.html v="all" %}
+
 An object is valid against this keyword if it contains all property names (keys)
 specified by the value of this keyword. The value of this keyword must be a
 non-empty array of strings representing property names.
@@ -106,14 +107,16 @@ Object must have both `a` and `b` properties.
 
 ### dependencies
 
+{% include drafts.html v="06, 07, *2019-09, *2020-12" %}
+
 An object is valid against this keyword if it mets all dependencies
 specified by this keyword value. The value of this keyword must be an object,
 where property values can be:
 
 - objects representing valid json schemas, and the whole object must match
-the entire schema
+the entire schema. <br><sup>*</sup>Starting with _draft 2019-09_ you should use [`dependentSchemas` keyword](#dependentschemas) instead.
 - arrays of strings representing property names, then the object must
-contain all property names
+contain all property names. <br><sup>*</sup>Starting with _draft 2019-09_ you should use [`dependentRequired` keyword](#dependentrequired) instead.
 
 Only property names (from this keyword value) that are also present
 in the object are checked.
@@ -153,8 +156,84 @@ If it has `c` then `b` can only be an integer.
 {% endcapture %}
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
+### dependentSchemas
+
+{% include drafts.html v="2019-09, 2020-12" %}
+
+An object is valid against this keyword if it mets all dependencies
+specified by this keyword value. The value of this keyword must be an object,
+where property values can be objects representing valid json schemas, 
+and the whole object must match the entire schema.
+
+Only property names (from this keyword value) that are also present in the object are checked.
+
+{% capture schema %}
+```json
+{
+  "type": "object",
+  "dependentSchemas": {
+    "c": {
+      "type": "object",
+      "properties": {
+        "b": {
+          "type": "integer"
+        }
+      }     
+    }
+  }
+}
+```
+
+If the object has property `c` then property `b` can only be an integer.
+{:.blockquote-footer}
+{% endcapture %}
+{% capture examples %}
+|Input|Status|
+|-----|------|
+| `{"c": 1}`{:.language-json} | *valid*{:.text-success.text-normal} - `b` is not required |
+| `{"c": 1, "b": 4}`{:.language-json} | *valid*{:.text-success.text-normal} |
+| `{"b": "str"}`{:.language-json} | *valid*{:.text-success.text-normal} - no dependencies |
+| `{"c": 1, "b": "str"}`{:.language-json} | *invalid*{:.text-danger.text-normal} - `b` must be an integer|
+{:.table}
+{% endcapture %}
+{% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
+
+### dependentRequired
+
+{% include drafts.html v="2019-09, 2020-12" %}
+
+An object is valid against this keyword if it mets all dependencies
+specified by this keyword value. The value of this keyword must be an object,
+where property values must be arrays of strings representing property names, 
+and the object must contain all property names.
+
+Only property names (from this keyword value) that are also present in the object are checked.
+
+{% capture schema %}
+```json
+{
+  "type": "object",
+  "dependentRequired": {
+    "a": ["b", "c"]
+  }
+}
+```
+
+If the object has property `a`, then it must also have `b` and `c`.
+{:.blockquote-footer}
+{% endcapture %}
+{% capture examples %}
+|Input|Status|
+|-----|------|
+| `{"a": 1, "b": 4, "c": 3, "d": true}`{:.language-json} | *valid*{:.text-success.text-normal} |
+| `{"a": 1, "b": "str"}`{:.language-json} | *invalid*{:.text-danger.text-normal} - `c` is not present|
+{:.table}
+{% endcapture %}
+{% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
 ### minProperties
+
+{% include drafts.html v="all" %}
 
 An object is valid against this keyword if the number of properties it contains
 is greater then, or equal to, the value of this keyword. The value of this
@@ -184,6 +263,8 @@ Object must have at least `2` properties.
 
 ### maxProperties
 
+{% include drafts.html v="all" %}
+
 An object is valid against this keyword if the number of properties it contains
 is lower then, or equal to, the value of this keyword. The value of this
 keyword must be a non-negative integer. Using `0` as a value means that
@@ -212,6 +293,8 @@ Object can have at most `2` properties.
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
 ### propertyNames
+
+{% include drafts.html v="all" %}
 
 An object is valid against this keyword if every property name (key) is valid
 against the value of this keyword. The value of this keyword must be a valid
@@ -246,6 +329,8 @@ Every property name must have a minimum length of `2`.
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
 ### patternProperties
+
+{% include drafts.html v="all" %}
 
 An object is valid against this keyword if every property where
 a property name (key) matches a regular expression from the value of this keyword,
@@ -287,6 +372,8 @@ every property name that starts with `int-` must be an integer.
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
 ### additionalProperties
+
+{% include drafts.html v="all" %}
 
 An object is valid against this keyword if all _unchecked_ properties are
 valid against the schema defined by the value of this keyword.
@@ -418,4 +505,53 @@ those starting with `extra-`, are not integers. Also, properties starting with
 {% endcapture %}
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
+### unevaluatedProperties
 
+{% include drafts.html v="2019-09, 2020-12" %}
+
+An object is valid against this keyword if every _unevaluated_ property is valid against the schema
+defined by the value of this keyword.
+
+_Unevaluated properties_ are the properties that were not evaluated anywhere in the current schema.
+This keyword can see through adjacent keywords, such as `allOf`.
+
+This keyword is hard to follow when you are dealing with complex schemas.
+Also, it slows down the validation process because short-circuits must be disabled
+for this keyword to work correctly.
+We do not recommend using it!
+{:.alert.alert-danger data-title="Important"}
+
+{% capture schema %}
+```json
+{
+  "type": "object",
+  "properties": {
+    "foo": {"type": "string"}
+  },
+  "allOf": [
+    {
+      "properties": {
+          "bar": {"type": "string"}
+      }
+    }
+  ],
+
+  "unevaluatedProperties": false
+}
+```
+
+Schema doesn't allow unevaluated properties.
+{:.blockquote-footer}
+{% endcapture %}
+
+{% capture examples %}
+|Input|Status|
+|-----|------|
+| `{"foo": "foo", "bar": "bar"}`{:.language-json} | *valid*{:.text-success.text-normal} - all evaluated |
+| `{"foo": "foo", "bar": "bar", "baz": "baz"}`{:.language-json} | *invalid*{:.text-danger.text-normal} - `baz` is unevaluated|
+{:.table}
+{% endcapture %}
+{% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
+
+You can disable unevaluatedProperties keyword by setting the [`allowUnevaluated` option](php-loader.html#parser-options) to `false`.
+{:.alert.alert-info data-title="Remember"}

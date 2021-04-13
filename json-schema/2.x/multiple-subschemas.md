@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/multiple-subschemas.html
+version: 2.x
 title: Applying multiple subschemas
 description: php opis json schema applyingmultiple subschemas with allOf, anyOf, oneOf
 keywords: opis, php, json, schema, multiple subschemas, allOf, anyOf, oneOf
@@ -18,13 +17,11 @@ the presented order. All keywords are optional.
 
 ### anyOf
 
+{% include drafts.html v="all" %}
+
 An instance is valid against this keyword if is valid against **at least one** schema
 defined by the value of this keyword. 
 The value of this keyword must be an array of valid json schemas (objects or booleans).
-
-Please note that Opis JSON Schema will stop checking other subschemas once
-a subschema validates the instance. This is done for performance reasons.
-{:.alert.alert-info data-title="Important"}
 
 
 {% capture schema %}
@@ -75,13 +72,11 @@ This schema will never validate
 
 ### oneOf
 
+{% include drafts.html v="all" %}
+
 An instance is valid against this keyword if is valid against **exactly one** schema
 defined by the value of this keyword. 
 The value of this keyword must be an array of valid json schemas (objects or booleans).
-
-Please note that Opis JSON Schema will stop checking other subschemas once
-two subschemas validate the instance. This is done for performance reasons.
-{:.alert.alert-info data-title="Important"}
 
 {% capture schema %}
 ```json
@@ -147,6 +142,8 @@ This schema will never validate
 {:.blockquote-footer}
 
 ### allOf
+
+{% include drafts.html v="all" %}
 
 An instance is valid against this keyword if is valid against **all** schemas
 defined by the value of this keyword. 

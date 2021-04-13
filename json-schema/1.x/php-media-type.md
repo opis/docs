@@ -2,6 +2,7 @@
 layout: project
 library: json-schema
 version: 1.x
+canonical: /json-schema/2.x/php-media-type.html
 title: Creating Opis JSON Schema media types (MIME)
 description: the opis json schema validation using custom media/mime types
 keywords: opis, json, schema, validation, media, mime

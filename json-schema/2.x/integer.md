@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/integer.html
+version: 2.x
 title: Integer type
 description: php opis json schema validation of integer numbers
 keywords: opis, php, json, schema, integer, validation

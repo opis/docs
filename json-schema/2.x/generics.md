@@ -1,8 +1,7 @@
 ---
 layout: project
 library: json-schema
-version: 1.x
-canonical: /json-schema/2.x/generics.html
+version: 2.x
 title: Generic validation keywords
 description: php opis json schema generic validation keywords
 keywords: opis, php, json, schema, generic, validation, type, enum, const
@@ -15,6 +14,8 @@ All these keywords are optional.
 
 
 ## type
+
+{% include drafts.html v="all" %}
 
 The `type` keyword specifies the type of data that the schema is expecting to validate.
 This keyword is not mandatory and the value of the keyword must be a string,
@@ -82,6 +83,8 @@ you should make sure that a data type is specified only once.
 
 ## const
 
+{% include drafts.html v="all" %}
+
 An instance validates against this keyword if its value equals to the
 value of this keyword. The value of this keyword can be anything.
 
@@ -130,6 +133,8 @@ Validates if the object have the same properties and values (order of properties
 
 
 ## enum
+
+{% include drafts.html v="all" %}
 
 An instance validates against this keyword if its value equals can be
 found in the items defined by the value of this keyword. 
