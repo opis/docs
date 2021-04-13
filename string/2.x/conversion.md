@@ -1,8 +1,7 @@
 ---
 layout: project
 library: string
-version: 1.x
-canonical: /string/2.x/conversion.html
+version: 2.x
 title: Conversion methods
 description: Methods used to convert multibyte strings to lowercase, uppercase and ASCII.
 keywords: opis, string, multibyte, unicode, utf-8, lowercase, uppercase, ascii

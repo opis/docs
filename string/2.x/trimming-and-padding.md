@@ -1,8 +1,7 @@
 ---
 layout: project
 library: string
-version: 1.x
-canonical: /string/2.x/trimming-and-padding.html
+version: 2.x
 title: Trimming and padding methods
 description: Methods used to perform trimming and padding on multibyte strings.
 keywords: opis, string, multibyte, unicode, utf-8, trim, pad, prefix, suffix  

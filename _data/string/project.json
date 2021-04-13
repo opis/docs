@@ -14,6 +14,11 @@
             "title": "Version 1.x",
             "path": "/string/1.x",
             "unmaintained": false
+        },
+        "2.x": {
+            "title": "Version 2.x",
+            "path": "/string/2.x",
+            "unmaintained": false
         }
     }
 }

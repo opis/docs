@@ -1,8 +1,7 @@
 ---
 layout: project
 library: string
-version: 1.x
-canonical: /string/2.x/quick-start.html
+version: 2.x
 title: Quick start
 description: Examples about how to create and how to use multibyte strings 
  in PHP, with the help of Opis String library
@@ -60,3 +59,32 @@ echo $str->toUpper(); //> ABCD
 echo $str; //> abcd
 ```
 
+You can also create a multibyte string using a list of code points.
+
+```php
+use Opis\String\UnicodeString as wstring;
+
+$str = wstring::fromCodePoints([79, 112, 105, 115]);
+echo $str; //> Opis
+```
+
+Some methods may accept a parameter for string case conversion.
+{:.alert.alert-info data-title="Important"}
+
+The following modes are constants in the `Opis\String\UnicodeString` class.
+
+- `KEEP_CASE` - do not convert
+- `LOWER_CASE` - convert to lower case
+- `UPPER_CASE` - convert to upper case
+- `ASCII_CONV` - convert to ascii
+- `FOLD_CASE` - used for comparison
+
+
+Example
+
+```php
+use Opis\String\UnicodeString as wstring;
+
+$str = wstring::from('Abc Def', null, wstring::UPPER_CASE);
+echo $str; //> ABC DEF
+```

@@ -1,8 +1,7 @@
 ---
 layout: project
 library: string
-version: 1.x
-canonical: /string/2.x/search-and-compare.html
+version: 2.x
 title: Search and compare methods
 description: Methods used to perform comparisons between multibyte strings, as well as for searching for substrings.
 keywords: opis, string, multibyte, unicode, utf-8, comparision, searching  
@@ -184,7 +183,7 @@ If no occurrence was found, `false` is returned.
  * @param bool $ignoreCase Optional
  * @return int|bool
  */
-public function lastIndexOf($text, bool $ignoreCase = false);
+public function lastIndexOf($text, int $offset, bool $ignoreCase = false);
 ```
 
 **usage**
@@ -195,5 +194,5 @@ use Opis\String\UnicodeString as wstring;
 echo wstring::from('AbcAbcabc')->lastIndexOf('A'); //> 3
 
 // Case insensitive
-echo wstring::from('AbcAbcabc')->lastIndexOf('A', true); //> 6
+echo wstring::from('AbcAbcabc')->lastIndexOf('A', 0, true); //> 6
 ```

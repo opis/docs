@@ -1,8 +1,7 @@
 ---
 layout: project
 library: string
-version: 1.x
-canonical: /string/2.x/operations.html
+version: 2.x
 title: Generic operation methods
 description: Methods used to perform generic operations on multibyte strings, like replace, substring, split, append, prepend.
 keywords: opis, string, multibyte, unicode, utf-8, replace, suubstring, split, reverse, repeat  
@@ -17,9 +16,10 @@ Appends the given string to the current string.
 ```php
 /**
  * @param string|self $text
+ * @param int $mode Optional, case type
  * @return self
  */
-public function append($text): self;
+public function append($text, int $mode = self::KEEP_CASE): self;
 ```
 
 **usage**
@@ -39,9 +39,10 @@ Prepends the given string to the current string.
 ```php
 /**
  * @param string|self $text
+ * @param int $mode Optional, case type
  * @return self
  */
-public function prepend($text): self;
+public function prepend($text, int $mode = self::KEEP_CASE): self;
 ```
 
 **usage**
@@ -62,9 +63,10 @@ Inserts the given string at the specified position.
 /**
  * @param string|self $text
  * @param int $position
+ * @param int $mode Optional, case type
  * @return self
  */
-public function insert($text, int $position): self;
+public function insert($text, int $position, int $mode = self::KEEP_CASE): self;
 ```
 
 **usage**
@@ -86,9 +88,10 @@ Replaces the first occurrence of the given string with another one.
  * @param string|self $subject
  * @param string|self $replace
  * @param int $offset Optional
+ * @param bool $ignoreCase
  * @return self
  */
-public function replace($subject, $replace, int $offset = 0): self;
+public function replace($subject, $replace, int $offset = 0, bool $ignoreCase = false): self;
 ```
 
 **usage**
@@ -100,6 +103,9 @@ echo wstring::from('abcabc')->replace('abc', 'foo'); //> fooabc
 
 // Using an offset
 echo wstring::from('abcabc')->replace('abc', 'foo', 2); //> abcfoo
+
+// Ignore case
+echo wstring::from('ABCabc')->replace('abc', 'foo', 0, true); //> fooabc
 ```
 
 ## replaceAll
@@ -112,9 +118,11 @@ Replaces all occurrences of the given string with another one.
 /**
  * @param string|self $subject
  * @param string|self $replace
+ * @param int $offset
+ * @param bool $ignoreCase
  * @return self
  */
-public function replaceAll($subject, $replace): self;
+public function replaceAll($subject, $replace, int $offset = 0, bool $ignoreCase = false): self;
 ```
 
 **usage**
@@ -172,9 +180,10 @@ If no delimiter was given, an UTF-8 string will be created for every char in the
 ```php
 /**
  * @param string|self $char
+ * @param bool $ignoreCase
  * @return self[]
  */
-public function split($char = ''): array;
+public function split($char = '', bool $ignoreCase = false): array;
 ```
 
 **usage**
