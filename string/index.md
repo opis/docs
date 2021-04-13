@@ -7,7 +7,7 @@ ga: true
 project:
     title: Opis String
     description: Multibyte strings as objects
-    docs_url: /string/1.x/
+    docs_url: /string/2.x/
     github: https://github.com/opis/string
     artwork: string
     license: Apache 2.0

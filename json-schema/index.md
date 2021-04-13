@@ -8,7 +8,7 @@ ga: true
 project:
     title: Opis JSON Schema
     description: Validate JSON documents
-    docs_url: /json-schema/1.x/
+    docs_url: /json-schema/2.x/
     github: https://github.com/opis/json-schema
     artwork: schema
     license: Apache 2.0
