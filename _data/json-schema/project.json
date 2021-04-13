@@ -8,7 +8,7 @@
         "title": "Opis JSON Schema",
         "url": "https://opis.io/json-schema"
     },
-    "current_version": "1.x",
+    "current_version": "2.x",
     "versions": {
         "1.x": {
             "title": "Version 1.x",
