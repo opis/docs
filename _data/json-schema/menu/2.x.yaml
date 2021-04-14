@@ -111,6 +111,6 @@
     - title: Custom Content encodings
       url: "/json-schema/2.x/php-content-encoding.html"
       description: Create a new json schema content encoding
-    - title: Migrate from 1.x
+    - title: Migrating
       url: "/json-schema/2.x/php-migration.html"
-      description: Migrate from 1.x to 2.0
+      description: Migrating from 1.x to 2.0
