@@ -8,7 +8,7 @@ keywords: opis, json, schema, variables, $vars
 ---
 
 Variables provide a new way to tackle
-different scenarios where json schema alone fails.
+different scenarios where JSON schema alone fails.
 This means, that you can use a new keyword named `$vars`
 to make your life easier.
 
@@ -19,7 +19,7 @@ to make your life easier.
 
 ## General structure
 
-In a json schema document, `$vars` must be an object but 
+In a JSON schema document, `$vars` must be an object but 
 the values inside `$vars` can be anything.
 
 Example of `$vars`:
@@ -43,7 +43,7 @@ Example of `$vars`:
 In the above example, `$vars` contains only _constant_ values, 
 making you wonder why it was named like so. The reason is simple,
 because you can access the current data being validated using
-[json pointers](pointers.html).
+[JSON pointers](pointers.html).
 
 To do this, you will reference a value in the same way you reference
 other schemas: by using `$ref` keyword. 
@@ -88,8 +88,8 @@ the `$vars` will become
 }
 ```
 
-As you can see, the `$ref` contains an [absolute json pointer](pointers.html#absolute-pointers), but
-can also use [relative json pointers](pointers.html#relative-pointers).
+As you can see, the `$ref` contains an [absolute JSON pointer](pointers.html#absolute-pointers), but
+can also use [relative JSON pointers](pointers.html#relative-pointers).
 
 Here is an example using a schema:
 
@@ -145,7 +145,7 @@ we are already at the root. So an error will be thrown.
 
 - Where can I find more info about these pointers?
 
-Go to the [Json Pointers](pointers.html) page.
+Go to the [JSON Pointers](pointers.html) page.
 
 - Where is this useful? 
 
@@ -157,7 +157,7 @@ See below.
 you can dynamically reference schemas based on the current data being validated.
 
 Please note that data can come from an untrusted source,
-so it is better to filter it before by using `enum` or other json schema
+so it is better to filter it before by using `enum` or other JSON Schema
 keywords including [$filters](filters.html) if needed. Also, use URI template
 escaping mechanisms.
 {:.alert.alert-warning data-title="Important"}
@@ -218,7 +218,7 @@ That placeholder will be replaced with the value of the variable having the same
 So, if `$vars` is `{"number-type": "test"}` the `$ref` will become `#/definitions/test`. 
 
 Second, the `$ref` from `number-type` property of `$vars` denotes a relative
-json pointer. Instead of using the object as placeholder, the value will be
+JSON pointer. Instead of using the object as placeholder, the value will be
 resolved, in our case it will use the value of `type` property from our data (not schema).
 
 Consider the following data to be validated against our schema:

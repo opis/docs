@@ -22,7 +22,7 @@ A format can be defined in two ways:
 
 You should register your formats before you validate any schema.
 When you register a format you must specify:
-- json data type (number, integer, string, array, object)
+- JSON data type (number, integer, string, array, object)
 - name: the name you will use in your schemas
 - the format
 

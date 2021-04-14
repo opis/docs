@@ -10,11 +10,11 @@ keywords: opis, json, schema, filter, $filters, validation
 JSON Schema specification contains a lot of keywords to validate data,
 but most of them are only for _range check_ (like minimum, maximum, minLength, ...).
 So, what happens if you want to check if something exists in a database?
-Well, there cannot be such thing in json schema because it requires a lot 
+Well, there cannot be such thing in JSON Schema because it requires a lot 
 of information (hostname, username, pass, query, ...) and it will be a pain
 to debug or reuse the schema, not to mention about security concerns.
 
-That's why we created a way to [add PHP logic as filters in json schema](php-filter.html), 
+That's why we created a way to [add PHP logic as filters in JSON Schema](php-filter.html), 
 by adding a new keyword named `$filters`.
 
 You can disable $filters keyword by setting the [`allowFilters` option](php-loader.html#parser-options) to `false`.

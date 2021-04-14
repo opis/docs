@@ -29,7 +29,7 @@ public function validate(
 ```
 
 - `$data` is the data you want to validate. [See more info about data types](#data-types)
-- `$schema` the json schema to use. This can be:
+- `$schema` the JSON schema to use. This can be:
   - a string representing an uri-reference or a json-encoded schema
   - an instance of `Opis\JsonSchema\Schema` or `Opis\JsonSchema\Uri`
   - a boolean, or an object (stdClass)
@@ -68,7 +68,7 @@ $slots = [
 // Schema as URI example
 $schema = 'http://example.com/schema.json';
 
-// Schema as a json string example
+// Schema as a JSON string example
 $schema = <<<'JSON'
 {
     "$id": "http://example.com/schema.json",
@@ -132,7 +132,7 @@ $data = true; $data =false;
 $data = [1, 2, 3];
 // object
 $data = (object)['name' => 'opis'];
-// decoding a json string
+// decoding a JSON string
 $data = json_decode('{"name": "opis"}');
 // object (using helper)
 $data = Helper::toJSON(['name' => 'opis']);
@@ -158,7 +158,7 @@ if ($result->hasError()) {
 
 ## Data types
 
-The data you want to validate must NOT be provided as a json encoded string,
+The data you want to validate must NOT be provided as a JSON-encoded string,
 because then it will always be considered a string.
 Use the following table to map PHP types to JSON types.
 {:.alert.alert-warning}
@@ -174,7 +174,7 @@ Use the following table to map PHP types to JSON types.
 | [\stdClass](http://php.net/manual/en/reserved.classes.php){:target="blank"} | [object](object.html) |
 {:.table.table-striped}
 
-If you have your data as a json encoded string, you can use [json_decode](http://php.net/manual/en/function.json-decode.php){:target="blank"}
+If you have your data as a JSON encoded string, you can use [json_decode](http://php.net/manual/en/function.json-decode.php){:target="blank"}
 function to decode it.
 {:.alert.alert-info}
 

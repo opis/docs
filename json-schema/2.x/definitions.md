@@ -70,7 +70,7 @@ the `#` represents a [JSON pointer](pointers.html). JSON pointers are
 covered in the [next](pointers.html) chapter, but we still explain
  the behaviour in a few words, using our example.
 
-Consider this json pointer `/$defs/custom-email`. Because the
+Consider this JSON pointer `/$defs/custom-email`. Because the
 pointer starts with `/` (slash) we know that we begin at the root of
 the schema document. Every substring delimited by a `/` slash, will
 be used as property name (key) to descend. In our case we have two

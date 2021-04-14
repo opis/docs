@@ -112,7 +112,7 @@ rule to `our-user.json`
 
 ## General structure
 
-In a json schema document, `$map` is evaluated like [$vars](variables.html),
+In a JSON Schema document, `$map` is evaluated like [$vars](variables.html),
 the difference is that `$map` can also be an array (`$vars` can only be an object)
 and can only be used in conjunction with `$ref`.
 

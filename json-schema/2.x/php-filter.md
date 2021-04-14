@@ -7,7 +7,6 @@ description: the opis json schema validation using custom filters
 keywords: opis, json, schema, validation, filter
 ---
 
-
 A filter can be defined in two ways:
 
 - as a callable, with the following signature:
@@ -29,7 +28,7 @@ For filters that don't require a validation context you should use a callable - 
 
 You should register your filters before you validate any schema.
 When you register a filter you must specify:
-- json data type (boolean, number, integer, string, null, array, object)
+- JSON data type (boolean, number, integer, string, null, array, object)
 - name: the name you will use in your schemas
 - the filter
 

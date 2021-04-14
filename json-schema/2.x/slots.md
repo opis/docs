@@ -7,9 +7,9 @@ description: php opis json schema composition with slots
 keywords: opis, php, json, schema, slots, composition
 ---
 
-The slots are a new way to create customizable json schemas.
+The slots are a new way to create customizable JSON schemas.
 Slots are _replaceable_ parts of a schema, and they are very similar to 
- named slots in HTML. A slot must contain a valid json schema.
+ named slots in HTML. A slot must contain a valid JSON schema.
 
 ## *$slots* keyword
 
@@ -60,7 +60,7 @@ Other things to note:
 This keyword injects new slots into the current execution context,
 and can only be used next to [`$ref` keyword](references.html#ref).
 The value of this keyword must be an object, the property names represents slot names,
-and the values must be valid json schemas.
+and the values must be valid JSON schemas.
 
 ```json
 {

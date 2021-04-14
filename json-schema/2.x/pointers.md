@@ -7,21 +7,21 @@ description: using absolute and relative json pointers in opis json schema
 keywords: opis, json, schema, validation, pointer, relative, absolute, $ref
 ---
 
-A JSON pointer is a way of traversing a json document by specifying the path
+A JSON pointer is a way of traversing a JSON document by specifying the path
 to the desired value.
 **Opis JSON Schema** supports both [absolute](#absolute-pointers) and [relative](#relative-pointers) JSON schema pointers.
 
 ## Absolute pointers
 
-Absolute json pointers are used to search for values starting at the root of the document.
-That's why absolute json pointers always start with `/` (slash). The property names (keys) used to descend
+Absolute JSON pointers are used to search for values starting at the root of the document.
+That's why absolute JSON pointers always start with `/` (slash). The property names (keys) used to descend
 into children are also separated by `/` (slash). 
 
 If a property name contains
 `~`, then inside the pointer it must be escaped using `~0`, or if contains `/` then
 it must be escaped using `~1`. 
 
-Here are some examples about how absolute json pointers work:
+Here are some examples about how absolute JSON pointers work:
 
 ```json
 {
@@ -58,11 +58,11 @@ You can find more details about the structure of absolute JSON pointers [here](h
 
 ### Using absolute pointers
 
-You can use absolute json pointers to fetch data/subschemas defined in the document.
+You can use absolute JSON pointers to fetch data/subschemas defined in the document.
 You must specify the pointer in the fragment component of the URI, this means
 that you should place your pointer after `#`.
 
-Consider the following json schema document
+Consider the following JSON schema document
 
 ```json
 {
@@ -170,7 +170,7 @@ These are the steps in order to perform validation for __email__ property
 
 ## Relative pointers
 
-Relative json pointers are used to search for values starting at the _current_
+Relative JSON pointers are used to search for values starting at the _current_
 location. We can go upwards by specifying the numbers of levels to ascend,
 we can optionally change index position,
 and then we can go downwards by using a pointer composed by multiple property names (keys) separated
@@ -186,7 +186,7 @@ If a property name contains
 `~`, then inside the pointer it must be escaped using `~0`, or if contains `/` then
 it must be escaped using `~1`. 
 
-Here are some examples about how relative json pointers work:
+Here are some examples about how relative JSON pointers work:
 
 ```json
 {
@@ -206,7 +206,7 @@ Here are some examples about how relative json pointers work:
 }
 ```
 
-Considering that our current location is `10.5` (absolute json pointer `/price`)
+Considering that our current location is `10.5` (absolute JSON pointer `/price`)
 we have the following table
 
 | Pointer | Value |
@@ -223,7 +223,7 @@ we have the following table
 | `2` | *error*{:.text-danger.text-normal} |
 {:.table}
 
-Considering that our current location is `"http://example.com"` (absolute json pointer `/features/1/url`)
+Considering that our current location is `"http://example.com"` (absolute JSON pointer `/features/1/url`)
 we have the following table
 
 | Pointer | Value |
@@ -244,7 +244,7 @@ we have the following table
 | `4` | *error*{:.text-danger.text-normal} |
 {:.table}
 
-You can find more details about the structure of relative json pointers [here](http://json-schema.org/draft/2020-12/relative-json-pointer.html){:target="_blank"}.
+You can find more details about the structure of relative JSON pointers [here](http://json-schema.org/draft/2020-12/relative-json-pointer.html){:target="_blank"}.
 
 ### Using relative pointers
 

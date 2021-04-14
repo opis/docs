@@ -101,16 +101,16 @@
       description: Loader object
     - title: Custom Filters
       url: "/json-schema/2.x/php-filter.html"
-      description: Create a new json schema filter
+      description: Create a new JSON schema filter
     - title: Custom Formats
       url: "/json-schema/2.x/php-format.html"
-      description: Create a new json schema format
+      description: Create a new JSON schema format
     - title: Custom Media types
       url: "/json-schema/2.x/php-media-type.html"
-      description: Create a new json schema media (MIME) type
+      description: Create a new JSON schema media (MIME) type
     - title: Custom Content encodings
       url: "/json-schema/2.x/php-content-encoding.html"
-      description: Create a new json schema content encoding
+      description: Create a new JSON schema content encoding
     - title: Migration
       url: "/json-schema/2.x/php-migration.html"
       description: Migrating from 1.x to 2.0

@@ -147,7 +147,7 @@ This schema will never validate
 
 An instance is valid against this keyword if is valid against **all** schemas
 defined by the value of this keyword. 
-The value of this keyword must be an array of valid json schemas (objects or booleans).
+The value of this keyword must be an array of valid JSON schemas (objects or booleans).
 
 {% capture schema %}
 ```json
