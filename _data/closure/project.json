@@ -12,12 +12,12 @@
     "versions": {
         "2.x": {
             "title": "Version 2.x",
-            "path": "/closure/2.x",
+            "path": "/closure/2.x/",
             "unmaintained": true
         },
         "3.x": {
             "title": "Version 3.x",
-            "path": "/closure/3.x",
+            "path": "/closure/3.x/",
             "unmaintained": false
         }
     }

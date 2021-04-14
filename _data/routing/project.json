@@ -12,7 +12,7 @@
     "versions": {
         "5.x": {
             "title": "Version 5.x",
-            "path": "/routing/5.x",
+            "path": "/routing/5.x/",
             "unmaintained": false
         }
     }

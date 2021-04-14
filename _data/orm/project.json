@@ -12,7 +12,7 @@
     "versions": {
         "1.x": {
             "title": "Version 1.x",
-            "path": "/orm/1.x",
+            "path": "/orm/1.x/",
             "unmaintained": false
         }
     }

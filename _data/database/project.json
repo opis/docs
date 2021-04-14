@@ -12,12 +12,12 @@
     "versions": {
         "3.x": {
             "title": "Version 3.6",
-            "path": "/database/3.6",
+            "path": "/database/3.6/",
             "unmaintained": true
         },
         "4.x": {
             "title": "Version 4.x",
-            "path": "/database/4.x",
+            "path": "/database/4.x/",
             "unmaintained": false
         }
     }

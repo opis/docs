@@ -13,7 +13,7 @@
     "versions": {
         "5.x": {
             "title": "Version 5.x",
-            "path": "/closure/5.x",
+            "path": "/events/5.x/",
             "unmaintained": false
         }
     }
