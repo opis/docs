@@ -26,6 +26,9 @@ whether they are configuration files or a set of data sent to an RESTful API end
 - Support for custom formats and media types
 - And, of course, all the json schema keywords
 
+Please check the [migration guide](php-migration.html).
+{:.alert.alert-info data-title="Migrating from 1.x"}
+
 ## License
 
 **Opis JSON Schema** is licensed under [Apache License, Version 2.0][apache_license].

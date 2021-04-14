@@ -169,6 +169,12 @@ Also, contains different resolvers: [filters](php-filter.html), [formats](php-fo
 
 ```php
 use Opis\JsonSchema\Validator;
+use Opis\JsonSchema\Resolvers\{
+    FilterResolver,
+    FormatResolver,
+    ContentEncodingResolver,
+    ContentMediaTypeResolver,
+};
 
 $validator = new Validator();
 
@@ -177,6 +183,20 @@ $parser = $validator->loader()->parser();
 
 // Or, by using the shortcut
 $parser = $validator->parser();
+
+// Accessing the resolvers...
+
+/** @var FilterResolver $filter_resolver */
+$filter_resolver = $parser->getFilterResolver();
+
+/** @var FormatResolver $format_resolver */
+$format_resolver = $parser->getFormatResolver();
+
+/** @var ContentEncodingResolver $encoding_resolver */
+$encoding_resolver = $parser->getContentEncodingResolver();
+
+/** @var ContentMediaTypeResolver $media_resolver */
+$media_resolver = $parser->getMediaTypeResolver();
 ```
 
 ### Parser options
