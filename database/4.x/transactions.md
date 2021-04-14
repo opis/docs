@@ -27,7 +27,7 @@ $result = $db->transaction(function(Database $db){
     $db->insert(['user' => 'John Doe', 'email' => 'jd@foobar.com'])
        ->into('users');
        
-    return $db->getConnection()->pdo()->lastInsertId();
+    return $db->getConnection()->getPDO()->lastInsertId();
 });
 ```
 

@@ -21,7 +21,7 @@ In 2.0 you should use the [validate](php-validator.html#data-validation) method,
 what kind of validation are you doing. This method returns a [`ValidationResult`](#validationresult).
 
 The above 3 methods are still present in 2.0, but they return a `ValidationError` for invalid data, 
-or `null` if data is valid. We recommend to stick with the `validate` method.
+or `null` if data is valid. We recommend sticking to `validate` method.
 
 {% capture v2 %}
 ```php
