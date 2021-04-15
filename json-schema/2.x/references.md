@@ -112,7 +112,7 @@ that will make your life easier:
 {% include drafts.html v="2019-09" %}
 
 This keyword is an attempt to create extensible schemas.
-We do not recommend using it!
+We do not recommend using it, unless you fully understand its behavior!
 {:.alert.alert-danger data-title="Important"}
 
 The value of this keyword must be a string const with value `#`.
@@ -173,7 +173,7 @@ Strict tree schema, guards against misspelled properties
 {% include drafts.html v="2019-09" %}
 
 This keyword is an attempt to create extensible schemas.
-We do not recommend using it!
+We do not recommend using it, unless you fully understand its behavior!
 {:.alert.alert-danger data-title="Important"}
 
 This keyword is used to dynamically identify a base URI at runtime 
@@ -192,7 +192,7 @@ The value of this keyword must be a boolean.
 {% include drafts.html v="2020-12" %}
 
 This keyword is an attempt to create extensible schemas.
-We do not recommend using it!
+We do not recommend using it, unless you fully understand its behavior!
 {:.alert.alert-danger data-title="Important"}
 
 This keyword is the successor of `$recursiveRef`.
@@ -255,7 +255,7 @@ Strict tree schema, guards against misspelled properties
 {% include drafts.html v="2020-12" %}
 
 This keyword is an attempt to create extensible schemas.
-We do not recommend using it!
+We do not recommend using it, unless you fully understand its behavior!
 {:.alert.alert-danger data-title="Important"}
 
 This keyword is the successor of `$recursiveAnchor`.

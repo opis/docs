@@ -518,7 +518,7 @@ This keyword can see through adjacent keywords, such as `allOf`.
 This keyword is hard to follow when you are dealing with complex schemas.
 Also, it slows down the validation process because short-circuits must be disabled
 for this keyword to work correctly.
-We do not recommend using it!
+We do not recommend using it, unless you fully understand its behavior!
 {:.alert.alert-danger data-title="Important"}
 
 {% capture schema %}

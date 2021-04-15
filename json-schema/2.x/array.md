@@ -315,7 +315,7 @@ corresponding schemas provided by the keyword value. The value of
 this keyword must be an array of valid json schemas, and each item must be valid against
 the schema defined at the same position (index). Items that don't have a corresponding
 position (array contains 5 items and this keyword only has 3)
-will be considered valid, unless the [`additionalItems` keyword](#additionalitems)
+will be considered valid, unless the [`items` keyword](#items)
 is present - which will decide the validity.
 
 
@@ -350,7 +350,7 @@ Other items can be anything.
 
 ### additionalItems
 
-{% include drafts.html v="all" %}
+{% include drafts.html v="06, 07, 2019-09, *2020-12" %}
 
 An array is valid against this keyword if all _unchecked_ items
 are valid against the schema defined by the keyword value.
@@ -358,6 +358,11 @@ An item is considered _unchecked_ if [`items` keyword](#items) or [`prefixItems`
 (starting with draft 2020-12) contains an array of schemas and doesn't have a corresponding position (index).
 The value of the keyword must be a valid json schema (object, boolean).
 
+This keyword is not officially defined in draft-2020-12, but we kept it for
+backward compatibility reasons.<br> 
+In draft-2020-12 this keyword was replaced by the [`items` keyword](#items), while the array
+version of the former `items` keyword was replaced by the [`prefixItems` keyword](#prefixitems).
+{:.alert.alert-warning data-title="Important"}
 
 {% capture schema %}
 ```json
@@ -404,7 +409,7 @@ This keyword can see through adjacent keywords, such as `allOf`.
 This keyword is hard to follow when you are dealing with complex schemas.
 Also, it slows down the validation process because short-circuits must be disabled
 for this keyword to work correctly.
-We do not recommend using it!
+We do not recommend using it, unless you fully understand its behavior!
 {:.alert.alert-danger data-title="Important"}
 
 {% capture schema %}
