@@ -210,20 +210,25 @@ $validator = new Validator();
 $validator->parser()->setOption($name, $value);
 ```
 
-| Option   |      Default     |  Description |
-|----------|:-------------:|------:|
-| defaultDraft |  `"2020-12"` | Sets the default draft to use when [`$schema` keyword](structure.html#schema-keyword) is missing |
-| decodeContent |  `["06", "07"]` | The draft versions where content related keywords are allowed: [contentEncoding](string.html#contentencoding), [contentMediaType](string.html#contentmediatype), [contentSchema](string.html#contentschema). Use `true` to allow regardless of draft version.  |
-| allowFilters |  `true` | Enables/disables [`$filters` keyword](filters.html) |
-| allowFormats |  `true` | Enables/disables [`format` keyword](formats.html) |
-| allowMappers |  `true` | Enables/disables [`$map` keyword](mappers.html) |
-| allowTemplates |  `true` | Enables/disables [URI templates](uri-template.html) |
-| allowGlobals |  `true` | Enables/disables [`$globals` keyword](variables.html#global-variables) |
-| allowDefaults |  `true` | Enables/disables [`default` keyword](default-value.html) |
-| allowSlots |  `true` | Enables/disables [`$slots` keyword](slots.html) |
-| allowPragmas |  `true` | Enables/disables [`$pragma` keyword](pragma.html) |
-| allowDataKeyword |  `true` | Enables/disables [`$data` keyword](data-keyword.html) |
-| allowUnevaluated |  `true` | Enables/disables [`unevaluatedProperties` keyword](object.html#unevaluatedproperties) and [`unevaluatedItems` keyword](array.html#unevaluateditems) |
-| allowKeywordsAlongsideRef |  `false` | If set to `true` then siblings of [`$ref` keyword](references.html#ref) are evaluated in draft-06 and draft-07. In other drafts this is enabled by default. |
+If you ever want to use only the features of json-schema (without the useful additions like filters or uri-templates),
+just use the settings from the "Vanilla" column.
+
+
+| Option   |      Default     |   Vanilla   |  Description |
+|----------|:-------------:|:------:|------:|
+| defaultDraft |  `"2020-12"` |  `"2020-12"` | Sets the default draft to use when [`$schema` keyword](structure.html#schema-keyword) is missing |
+| decodeContent |  `["06", "07"]` |  `["06", "07"]` | The draft versions where content related keywords are allowed: [contentEncoding](string.html#contentencoding), [contentMediaType](string.html#contentmediatype), [contentSchema](string.html#contentschema). Use `true` to allow regardless of draft version.  |
+| allowFilters |  `true` |  `false` | Enables/disables [`$filters` keyword](filters.html) |
+| allowFormats |  `true` |  `true` | Enables/disables [`format` keyword](formats.html) |
+| allowMappers |  `true` |  `false` | Enables/disables [`$map` keyword](mappers.html) |
+| allowTemplates |  `true` |  `false` | Enables/disables [URI templates](uri-template.html) |
+| allowGlobals |  `true` |  `false` | Enables/disables [`$globals` keyword](variables.html#global-variables) |
+| allowDefaults |  `true` |  `false` | Enables/disables [`default` keyword](default-value.html) |
+| allowSlots |  `true` |  `false` | Enables/disables [`$slots` keyword](slots.html) |
+| allowPragmas |  `true` |  `false` | Enables/disables [`$pragma` keyword](pragma.html) |
+| allowDataKeyword |  `true` |  `false` | Enables/disables [`$data` keyword](data-keyword.html) |
+| allowUnevaluated |  `true` |  `true` | Enables/disables [`unevaluatedProperties` keyword](object.html#unevaluatedproperties) and [`unevaluatedItems` keyword](array.html#unevaluateditems) |
+| allowKeywordsAlongsideRef |  `false` |  `false` | If set to `true` then siblings of [`$ref` keyword](references.html#ref) are evaluated in draft-06 and draft-07. In other drafts this is enabled by default. |
+| allowRelativeJsonPointerInRef |  `true` |  `false` | If set to `true` then [`$ref` keyword](references.html#ref) will use relative pointers if the value represents a relative pointer. In rare cases, this can collide with paths. (Since v2.1.0). |
 {:.table.table-striped}
 
