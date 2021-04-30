@@ -230,5 +230,7 @@ just use the settings from the "Vanilla" column.
 | allowUnevaluated |  `true` |  `true` | Enables/disables [`unevaluatedProperties` keyword](object.html#unevaluatedproperties) and [`unevaluatedItems` keyword](array.html#unevaluateditems) |
 | allowKeywordsAlongsideRef |  `false` |  `false` | If set to `true` then siblings of [`$ref` keyword](references.html#ref) are evaluated in draft-06 and draft-07. In other drafts this is enabled by default. |
 | allowRelativeJsonPointerInRef |  `true` |  `false` | If set to `true` then [`$ref` keyword](references.html#ref) will use relative pointers if the value represents a relative pointer. In rare cases, this can collide with paths. (Since v2.1.0). |
+| keepDependenciesKeyword |  `true` |  `false` | If set to `true` then [`dependencies` keyword](object.html#dependencies) will be available for draft-2019-09 and draft-2020-12. (Since v2.1.0). |
+| keepAdditionalItemsKeyword |  `true` |  `false` | If set to `true` then [`additionalItems` keyword](array.html#additionalitems) will be available for draft-2020-12. (Since v2.1.0). |
 {:.table.table-striped}
 
