@@ -361,7 +361,8 @@ The value of the keyword must be a valid json schema (object, boolean).
 This keyword is not officially defined in draft-2020-12, but we kept it for
 backward compatibility reasons.<br> 
 In draft-2020-12 this keyword was replaced by the [`items` keyword](#items), while the array
-version of the former `items` keyword was replaced by the [`prefixItems` keyword](#prefixitems).
+version of the former `items` keyword was replaced by the [`prefixItems` keyword](#prefixitems).<br>
+You can disable it for draft-2020-12 by setting the [`keepAdditionalItemsKeyword` option](php-loader.html#parser-options) to `false`.
 {:.alert.alert-warning data-title="Important"}
 
 {% capture schema %}

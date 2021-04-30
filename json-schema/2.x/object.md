@@ -121,6 +121,12 @@ contain all property names. <br><sup>*</sup>Starting with _draft 2019-09_ you sh
 Only property names (from this keyword value) that are also present
 in the object are checked.
 
+This keyword is not officially defined in draft-2019-09 and draft-2020-12, but we kept it for
+backward compatibility reasons.<br>
+This keyword was split into [`dependentSchemas` keyword](#dependentschemas) and [`dependentRequired` keyword](#dependentrequired).<br>
+You can disable it for draft-2020-12 by setting the [`keepDependenciesKeyword` option](php-loader.html#parser-options) to `false`.
+{:.alert.alert-warning data-title="Important"}
+
 {% capture schema %}
 ```json
 {
