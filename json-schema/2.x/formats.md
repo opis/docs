@@ -118,6 +118,29 @@ the following format: `YYYY:MM::DDThh:mm:ss.sTZD`.
 {% endcapture %}
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
+### duration
+
+A string is valid against this format if it represents a duration 
+as specified by ISO 8601. You can create durations in PHP 
+with the help of [DateInterval class](https://www.php.net/manual/en/dateinterval.construct.php){:rel="nofollow" target="_blank"}.
+
+{% capture schema %}
+```json
+{
+    "type": "string",
+    "format": "duration"
+}
+```
+{% endcapture %}
+{% capture examples %}
+|Input|Status|
+|-----|------|
+| `"P4DT12H30M5S`{:.language-json} | *valid*{:.text-success.text-normal} |
+| `"PT1D"`{:.language-json} | *invalid*{:.text-danger.text-normal}|
+{:.table}
+{% endcapture %}
+{% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
+
 ### regex
 
 A string is valid against this format if it represents a
