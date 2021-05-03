@@ -67,8 +67,7 @@ Valid if the number is at least `10.5`.
 
 A number is valid against this keyword if is strictly greater than the
 value of this keyword. Value of this keyword must be a number (integer or float)
-or a boolean. If this keyword holds a boolean, 
-then the `minimum` keyword is required and is used as reference for comparison.
+or a boolean.
 
 {% capture schema %}
 ```json
@@ -91,6 +90,9 @@ Valid if the number is greater than `10.5`.
 {% endcapture %}
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
+If this keyword holds a boolean,
+then the `minimum` keyword is required and is used as reference for comparison.
+This is not officially defined, you can disable it by setting [`allowExclusiveMinMaxAsBool`](php-loader.html#parser-option) parser option to `false`.
 
 {% capture schema %}
 ```json
@@ -149,8 +151,7 @@ Valid if the number is at most `10.5`.
 
 A number is valid against this keyword if is strictly lower than the
 value of this keyword. Value of this keyword must be a number (integer or float)
-or a boolean. If this keyword holds a boolean, 
-then the `maximum` keyword is required and is used as reference for comparison.
+or a boolean.
 
 {% capture schema %}
 ```json
@@ -173,6 +174,9 @@ Valid if the number is lower than `10.5`.
 {% endcapture %}
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
 
+If this keyword holds a boolean,
+then the `maximum` keyword is required and is used as reference for comparison.
+This is not officially defined, you can disable it by setting [`allowExclusiveMinMaxAsBool`](php-loader.html#parser-option) parser option to `false`.
 
 {% capture schema %}
 ```json
