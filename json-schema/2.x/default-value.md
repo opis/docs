@@ -34,40 +34,8 @@ You can disable it by setting the [`allowDefaults` option](php-loader.html#parse
 |Input|Status|
 |-----|------|
 | `{"prop1": "string"}`{:.language-json} | *valid*{:.text-success.text-normal} |
-| `{}`{:.language-json} | *valid*{:.text-success.text-normal} - the default value for `prop1` is used to validate the property|
+| `{}`{:.language-json} | *valid*{:.text-success.text-normal} - the default value for `prop1` is not required |
 | `{"prop1": 5}`{:.language-json} | *invalid*{:.text-danger.text-normal} - not a string|
-{:.table}
-{% endcapture %}
-{% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
-
-
-Please pay attention when using `default`! The value of the keyword must pass
-the validations!
-{:.alert.alert-warning data-title="Important"}
-
-{% capture schema %}
-```json
-{
-  "type": "object",
-  "properties": {
-    "prop1": {
-      "type": "string",
-      "default": 5
-    }
-  }
-}
-```
-
-This will not be valid if `prop1` is missing because 
-the default value is not a string.
-{:.blockquote-footer}
-{% endcapture %}
-{% capture examples %}
-|Input|Status|
-|-----|------|
-| `{"prop1": "string"}`{:.language-json} | *valid*{:.text-success.text-normal} |
-| `{}`{:.language-json} | *invalid*{:.text-danger.text-normal} - the default value is not a string|
-| `{"prop1": null}`{:.language-json} | *invalid*{:.text-danger.text-normal} - `null` is not a string|
 {:.table}
 {% endcapture %}
 {% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
