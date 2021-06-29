@@ -95,7 +95,7 @@ Use this method to register a filesystem directory from where to load schema fil
 You must specify the id prefix.
 
 ```php
-$resolver->registerPreifx('/path/to/dir', 'http://example.com/');
+$resolver->registerPrefix('http://example.com/','/path/to/dir');
 ```
 
 In the above example we create a loader that maps 
