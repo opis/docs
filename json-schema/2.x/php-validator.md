@@ -32,6 +32,7 @@ public function validate(
 - `$schema` the JSON schema to use. This can be:
   - a string representing an uri-reference or a json-encoded schema
   - an instance of `Opis\JsonSchema\Schema` or `Opis\JsonSchema\Uri`
+    (note: to load schemas over the network, [register a callable](https://opis.io/json-schema/2.x/php-loader.html#registerprotocol-method) responsible for fetching the JSON.)
   - a boolean, or an object (stdClass)
 - `$globals` contains [global variables](variables.html#global-variables)
 - `$slots` injects [slots](slots.html)
