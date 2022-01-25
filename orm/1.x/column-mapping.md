@@ -67,7 +67,7 @@ The `assignable` method allows developers to specify which columns can be mass-a
 the help of the data mapper's `assign` method.
 
 ```php
-$mapper->assiganble(['name', 'description', 'age']);
+$mapper->assignable(['name', 'description', 'age']);
 ```
 
 The `guarded` method allows developers to specify which columns can not be mass-assigned with
