@@ -82,7 +82,7 @@ public function registerFile(string $id, string $file): self
 Use this method to register a file as a schema. You must specify the id.
 
 ```php
-$resolver->regiserFile('http://example.com/schema.json', '/path/to/file.json');
+$resolver->registerFile('http://example.com/schema.json', '/path/to/file.json');
 ```
 
 ### registerPrefix method
