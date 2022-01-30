@@ -25,7 +25,7 @@ use Opis\Database\Connection;
 use Opis\ORM\EntityManager;
 
 // Define a database connection
-$connection = new Connection("dsn:mysql;dbname=test", "root", "secret");
+$connection = new Connection("mysql:dbname=test", "root", "secret");
 
 // Create an entity manager
 $orm = new EntityManager($connection);
