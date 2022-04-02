@@ -161,7 +161,7 @@ This keyword is not required.
 
 ## *$defs* keyword
 
-Same as `definitions` keyword (standardized staring with draft-2019-09).
+Same as `definitions` keyword (standardized starting with draft-2019-09).
 
 ## Metadata keywords
 
