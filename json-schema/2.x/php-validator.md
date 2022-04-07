@@ -274,7 +274,7 @@ catch instances of `Opis\JsonSchema\Exceptions\SchemaException`.
 use Opis\JsonSchema\Exceptions\SchemaException;
 
 try {
-    $result = $valdiator=>validate($data, $schema);
+    $result = $validator->validate($data, $schema);
 } catch (SchemaException $e) {
     // ...
 }
