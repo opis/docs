@@ -128,7 +128,7 @@ $data = "opis";
 // null
 $data = null;
 // boolean
-$data = true; $data =false;
+$data = true; $data = false;
 // array
 $data = [1, 2, 3];
 // object
