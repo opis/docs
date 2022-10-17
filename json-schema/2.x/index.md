@@ -58,7 +58,7 @@ Or you could directly reference it into your `composer.json` file as a dependenc
 
 ## Documentation
 
-On this site you can find documentation about json schema itself and about [the API of this library](php-intro.html).
+On this site you can find documentation about json schema itself and about the API of this library. See [the quick start page](quick-start.html) to get started.
 
 ### JSON Schema keywords
 
