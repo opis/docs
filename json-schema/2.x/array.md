@@ -235,7 +235,7 @@ Array must contain at most two integers.
 
 ### items
 
-{% include drafts.html v="06, 07, 2019-09, *2020-21" %}
+{% include drafts.html v="06, 07, 2019-09, *2020-12" %}
 
 An array is valid against this keyword if items are valid against the
 corresponding schemas provided by the keyword value. The value of
