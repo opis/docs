@@ -96,7 +96,7 @@ the following format: `hh:mm:ss.sTZD`.
 ### date-time
 
 A string is valid against this format if it represents a date-time in
-the following format: `YYYY:MM::DDThh:mm:ss.sTZD`.
+the following format: `YYYY-MM-DDThh:mm:ss.sTZD`.
 
 
 {% capture schema %}
