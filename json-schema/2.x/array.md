@@ -105,7 +105,8 @@ more than once in the array.
 The value of this keyword must be a boolean. If set to `false` the keyword
 validation will be ignored.
 
-Be aware of additional processing time needed when enabling `uniqueItems` for larger JSON arrays, especially JSON arrays of objects.
+Be aware of additional processing time needed when enabling `uniqueItems` for large JSON arrays, 
+especially arrays of objects.
 {:.alert.alert-warning data-title="Performance"}
 
 {% capture schema %}

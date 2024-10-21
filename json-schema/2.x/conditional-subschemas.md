@@ -106,7 +106,7 @@ it must be `0`.
 | `"abcd"`{:.language-json} | *valid*{:.text-success.text-normal} - string of length 4 |
 | `0`{:.language-json} | *valid*{:.text-success.text-normal} |
 | `0.0`{:.language-json} | *valid*{:.text-success.text-normal} |
-| `"ab"`{:.language-json} | *invalid*{:.text-success.text-normal} - string of length 2 |
+| `"ab"`{:.language-json} | *invalid*{:.text-danger.text-normal} - string of length 2 |
 | `1`{:.language-json} | *invalid*{:.text-danger.text-normal} - not a string and not `0`|
 | `["abc"]`{:.language-json} | *invalid*{:.text-danger.text-normal} - not a string and not `0`|
 {:.table}
