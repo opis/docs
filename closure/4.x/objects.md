@@ -12,6 +12,9 @@ If you try to add custom serializers to your own classes, the recommended approa
 [`__serialize() / __unserialize()`](https://www.php.net/manual/en/language.oop5.magic.php#object.serialize) 
 magic methods. Treat closures and other objects just like they are serializable, we'll do the rest.
 
+In the next example you can safely omit `__serialize` and `__unserialize` methods, the code will still work.
+However, we recommend implementing them as a best practice.
+
 ```php
 use Opis\Closure\Serializer;
 
@@ -41,7 +44,7 @@ $object = Serializer::unserialize($serialized);
 echo $object->test(); // it works
 ```
 
-But we often have to deal with code that we cannot control because it is from a third party.
+We often have to deal with code that we cannot control because it is from a third party.
 Don't worry, you can add custom serializers for any class, or you can overwrite existing serializers,
 by using the `setCustom` method. The method receives as parameters the class name, serialization function 
 and deserialization function.
