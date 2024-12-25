@@ -6,17 +6,44 @@ title: Features
 description: A list of library's main features
 ---
 
-## Integration
-
-In order to make your own objects serializable, all you have to do is to implement the standard 
-[`__serialize() / __unserialize()`](https://www.php.net/manual/en/language.oop5.magic.php#object.serialize) magic methods.
-That's it.
-
 ## Adding custom serializers
 
-We often have to deal with code that we cannot control because it is from a third party.
+If you try to add custom serializers to your own classes, the recommended approach is to implement the standard
+[`__serialize() / __unserialize()`](https://www.php.net/manual/en/language.oop5.magic.php#object.serialize) 
+magic methods. Treat closures and other objects just like they are serializable, we'll do the rest.
+
+```php
+use Opis\Closure\Serializer;
+
+class MyClass {
+   private Closure $callback;
+   
+   public function __construct(Closure $fn) {
+        $this->callback = $fn;
+   }
+   
+   public function test() {
+        $fn = $this->callback;
+        return $fn(); 
+   }
+   
+   public function __serialize() : array {
+        return ["callback" => $this->callback];
+   }
+   
+   public function __unserialize(array $data) : void {
+        $this->callback = $data["callback"];
+   }
+}
+
+$serialized = Serializer::serialize(new MyClass(fn() => "it works"));
+$object = Serializer::unserialize($serialized);
+echo $object->test(); // it works
+```
+
+But we often have to deal with code that we cannot control because it is from a third party.
 Don't worry, you can add custom serializers for any class, or you can overwrite existing serializers,
-by using the `setCustomSerialization` method. The method receives as parameters the class name, serialization function 
+by using the `setCustom` method. The method receives as parameters the class name, serialization function 
 and deserialization function.
 
 ```php
@@ -24,7 +51,7 @@ use Opis\Closure\Serializer;
 
 use Some\Vendor\ExternalClass;
 
-Serializer::setCustomSerialization(
+Serializer::setCustom(
     ExternalClass::class,
     static function (ExternalClass $object): array {
         // we must always return an array from a serializer
@@ -96,28 +123,6 @@ The solve callback has the following signature:
 function(?object $object, mixed &$value = null): void;
 ```
 
-### Builtin functions
-
-If you don't want to write the serialization and deserialization functions you can use the ones provided by the library.
-Just call `setObjectSerialization` method on the desired class name.
-
-```php
-use Opis\Closure\Serializer;
-
-class MyClass {
-    public ?Closure $callbackA = null;
-    public ?Closure $callbackB = null;
-}
-
-// Make it work
-Serializer::setObjectSerialization(MyClass::class);
-```
-
-Note: this method won't work if the class has `__serialize` method
-and also won't be applied if the class prevents [boxing](#boxing).
-Also, there may be cases where you'll still need to write custom code.
-
-
 ## Default object serializers
 
 By default, we have custom serializers for the following PHP classes: 
@@ -178,13 +183,13 @@ class NumberPair {
 }
 ```
 
-The other method involves using the `preventBoxing` method, and can be used on any class.
+The other method involves using the `noBox` method, and can be used on any class.
 
 ```php
 use Opis\Closure\Serializer;
 use Some\Vendor\SomeClass;
 
-Serializer::preventBoxing(SomeClass::class);
+Serializer::noBox(SomeClass::class);
 ```
 
 All objects that directly or indirectly have references to a closure or any boxed objects,
