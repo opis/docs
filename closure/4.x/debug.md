@@ -59,8 +59,8 @@ $closure();
 [![Error 1][error2]][error2]
 
 [whoops]: https://github.com/filp/whoops "Whoops"
-[error1]: /assets/closure/error1_4.png "Error 1" 
+[error1]: /closure/assets/error1_4.png "Error 1" 
 {: .img-fluid }
-[error2]: /assets/closure/error2_4.png "Error 2" 
+[error2]: /closure/assets/error2_4.png "Error 2" 
 {: .img-fluid }
 
