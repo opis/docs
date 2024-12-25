@@ -100,11 +100,11 @@ The function has the following signature:
  * @param array $data A reference data that comes from the serialization function
  * @param callable $solve A callback used to solve references, must be invoked right after we have the object 
  *                        and before we set any properties to it (optional, but recommended)
- * @param string $class Object's class name, useful when this function is generic (optional)
+ * @param ReflectionClass $class Class reflection, useful when this function is generic (optional)
  * @param Opis\Closure\DeserializationHandler $handler The deserialization handler (optional, advanced)
  * @return object The deserialized object
  */
-function (array &$data, callable $solve, string $class, Opis\Closure\DeserializationHandler $handler): object;
+function (array &$data, callable $solve, ReflectionClass $class, Opis\Closure\DeserializationHandler $handler): object;
 // note: you are free to replace object (return type) with the actual class name for type hinting
 ```
 
