@@ -46,6 +46,10 @@ Don't worry, you can add custom serializers for any class, or you can overwrite 
 by using the `setCustom` method. The method receives as parameters the class name, serialization function 
 and deserialization function.
 
+**Opis Closure** already provides a generic serialization method for all objects,
+you are not required to implement one for every class.
+{:.alert.alert-info data-title="Remember"}
+
 ```php
 use Opis\Closure\Serializer;
 
@@ -142,8 +146,13 @@ By default, we have custom serializers for the following PHP classes:
 - [WeakMap](https://www.php.net/manual/en/class.weakmap.php) 
 - [WeakReference](https://www.php.net/manual/en/class.weakreference.php)
 
-Internal classes such as [DateTime](https://www.php.net/manual/en/class.datetime.php) don't need special handling, 
-and are supported as is. 
+
+The following internal classes are supported and don't require custom serializers:
+- [DateTime](https://www.php.net/manual/en/class.datetime.php)
+- [DateTimeImmutable](https://www.php.net/manual/en/class.datetimeimmutable.php)
+- [DateTimeZone](https://www.php.net/manual/en/class.datetimezone.php)
+- [DateInterval](https://www.php.net/manual/en/class.dateinterval.php)
+- [DatePeriod](https://www.php.net/manual/en/class.dateperiod.php)
 
 ## Boxing
 
