@@ -71,6 +71,9 @@ class MySecurityProvider implements SecurityProviderInterface
 {
     public function sign(string $data): string {
         // you should return a hash for $data
+        // IMPORTANT: make sure your returned hash doesn't include a new line (\n).
+        // If it does, you should use base64_encode() or similar on your hash,
+        // and decode it with base64_decode() in verify().
     }
     
     public function verify(string $hash, string $data): bool {
