@@ -9,14 +9,14 @@ description: A list of library's main features
 ## Adding custom serializers
 
 If you try to add custom serializers to your own classes, the recommended approach is to implement the standard
-[`__serialize() / __unserialize()`](https://www.php.net/manual/en/language.oop5.magic.php#object.serialize) 
+[`__serialize() / __unserialize()`](https://www.php.net/manual/en/language.oop5.magic.php#object.serialize){:rel="nofollow" target="_blank"}
 magic methods. Treat closures and other objects just like they are serializable, we'll do the rest.
 
 In the next example you can safely omit `__serialize` and `__unserialize` methods, the code will still work.
 However, we recommend implementing them as a best practice.
 
 ```php
-use Opis\Closure\Serializer;
+use function Opis\Closure\{serialize, unserialize};
 
 class MyClass {
    private Closure $callback;
@@ -39,26 +39,28 @@ class MyClass {
    }
 }
 
-$serialized = Serializer::serialize(new MyClass(fn() => "it works"));
-$object = Serializer::unserialize($serialized);
+$serialized = serialize(new MyClass(fn() => "it works"));
+$object = unserialize($serialized);
 echo $object->test(); // it works
 ```
 
 We often have to deal with code that we cannot control because it is from a third party.
 Don't worry, you can add custom serializers for any class, or you can overwrite existing serializers,
-by using the `setCustom` method. The method receives as parameters the class name, serialization function 
-and deserialization function.
+by using the `register()` function. The function receives as parameters the class name, 
+the serialization function and the deserialization function.
 
 **Opis Closure** already provides a generic serialization method for all objects,
-you are not required to implement one for every class.
-{:.alert.alert-info data-title="Remember"}
+you are not required to implement one for every class. Here's the order we use: 
+1. registered custom serializer using `register()`
+2. magic methods inside class [`__serialize() / __unserialize()`](https://www.php.net/manual/en/language.oop5.magic.php#object.serialize){:rel="nofollow" target="_blank"}
+3. fallback to a builtin generic object serialization / deserialization
+
 
 ```php
-use Opis\Closure\Serializer;
-
 use Some\Vendor\ExternalClass;
+use function Opis\Closure\register;
 
-Serializer::setCustom(
+register(
     ExternalClass::class,
     static function (ExternalClass $object): array {
         // we must always return an array from a serializer
@@ -89,10 +91,9 @@ It has the following signature:
 ```php
 /**
  * @param object $object The object that must be serialized
- * @param Opis\Closure\SerializationHandler $handler The serialization handler (optional, advanced)
  * @return array The serialized data
  */
-function (object $object, Opis\Closure\SerializationHandler $handler): array;
+function (object $object): array;
 // note: you are free to replace object (first parameter) with the actual class name for type hinting
 ```
 
@@ -108,10 +109,9 @@ The function has the following signature:
  * @param callable $solve A callback used to solve references, must be invoked right after we have the object 
  *                        and before we set any properties to it (optional, but recommended)
  * @param ReflectionClass $class Class reflection, useful when this function is generic (optional)
- * @param Opis\Closure\DeserializationHandler $handler The deserialization handler (optional, advanced)
  * @return object The deserialized object
  */
-function (array &$data, callable $solve, ReflectionClass $class, Opis\Closure\DeserializationHandler $handler): object;
+function (array &$data, callable $solve, ReflectionClass $class): object;
 // note: you are free to replace object (return type) with the actual class name for type hinting
 ```
 
@@ -133,34 +133,35 @@ function(?object $object, mixed &$value = null): void;
 ## Default object serializers
 
 By default, we have custom serializers for the following PHP classes: 
-- [enum](https://www.php.net/manual/en/language.types.enumerations.php) (cannot be overwritten)
-- [stdClass](https://www.php.net/manual/en/class.stdclass.php) (cannot be overwritten)
-- [Closure](https://www.php.net/manual/en/class.closure.php) (cannot be overwritten)
-- [ArrayObject](https://www.php.net/manual/en/class.arrayobject.php)
-- [SplObjectStorage](https://www.php.net/manual/en/class.splobjectstorage.php)  
-- [SplFixedArray](https://www.php.net/manual/en/class.splfixedarray.php)
-- [SplDoublyLinkedList](https://www.php.net/manual/en/class.spldoublyinkedlist.php)   
-- [SplStack](https://www.php.net/manual/en/class.splstack.php)   
-- [SplQueue](https://www.php.net/manual/en/class.splqueue.php)
-- [SplHeap](https://www.php.net/manual/en/class.splheap.php)  
-- [SplMaxHeap](https://www.php.net/manual/en/class.splmaxheap.php)  
-- [SplMinHeap](https://www.php.net/manual/en/class.splminheap.php)  
-- [SplPriorityQueue](https://www.php.net/manual/en/class.splpriorityqueue.php)  
-- [WeakMap](https://www.php.net/manual/en/class.weakmap.php) 
-- [WeakReference](https://www.php.net/manual/en/class.weakreference.php)
+- [enum](https://www.php.net/manual/en/language.types.enumerations.php){:rel="nofollow" target="_blank"} (cannot be overwritten)
+- [stdClass](https://www.php.net/manual/en/class.stdclass.php){:rel="nofollow" target="_blank"} (cannot be overwritten)
+- [Closure](https://www.php.net/manual/en/class.closure.php){:rel="nofollow" target="_blank"} (cannot be overwritten)
+- [ArrayObject](https://www.php.net/manual/en/class.arrayobject.php){:rel="nofollow" target="_blank"}
+- [SplObjectStorage](https://www.php.net/manual/en/class.splobjectstorage.php){:rel="nofollow" target="_blank"}
+- [SplFixedArray](https://www.php.net/manual/en/class.splfixedarray.php){:rel="nofollow" target="_blank"}
+- [SplDoublyLinkedList](https://www.php.net/manual/en/class.spldoublyinkedlist.php){:rel="nofollow" target="_blank"}
+- [SplStack](https://www.php.net/manual/en/class.splstack.php){:rel="nofollow" target="_blank"}
+- [SplQueue](https://www.php.net/manual/en/class.splqueue.php){:rel="nofollow" target="_blank"}
+- [SplHeap](https://www.php.net/manual/en/class.splheap.php){:rel="nofollow" target="_blank"}
+- [SplMaxHeap](https://www.php.net/manual/en/class.splmaxheap.php){:rel="nofollow" target="_blank"}
+- [SplMinHeap](https://www.php.net/manual/en/class.splminheap.php){:rel="nofollow" target="_blank"}
+- [SplPriorityQueue](https://www.php.net/manual/en/class.splpriorityqueue.php){:rel="nofollow" target="_blank"}
+- [WeakMap](https://www.php.net/manual/en/class.weakmap.php){:rel="nofollow" target="_blank"}
+- [WeakReference](https://www.php.net/manual/en/class.weakreference.php){:rel="nofollow" target="_blank"}
 
 
 The following internal classes are supported and don't require custom serializers:
-- [DateTime](https://www.php.net/manual/en/class.datetime.php)
-- [DateTimeImmutable](https://www.php.net/manual/en/class.datetimeimmutable.php)
-- [DateTimeZone](https://www.php.net/manual/en/class.datetimezone.php)
-- [DateInterval](https://www.php.net/manual/en/class.dateinterval.php)
-- [DatePeriod](https://www.php.net/manual/en/class.dateperiod.php)
+- [DateTime](https://www.php.net/manual/en/class.datetime.php){:rel="nofollow" target="_blank"}
+- [DateTimeImmutable](https://www.php.net/manual/en/class.datetimeimmutable.php){:rel="nofollow" target="_blank"}
+- [DateTimeZone](https://www.php.net/manual/en/class.datetimezone.php){:rel="nofollow" target="_blank"}
+- [DateInterval](https://www.php.net/manual/en/class.dateinterval.php){:rel="nofollow" target="_blank"}
+- [DatePeriod](https://www.php.net/manual/en/class.dateperiod.php){:rel="nofollow" target="_blank"}
 
-## Boxing
+
+## Object boxing
 
 When **Opis Closure** serializes an object it uses a box where it puts necessary info such as class name and data.
-At deserialization the data is unboxed and the object reconstructed. This may add a little overhead for some classes
+At deserialization the data is unboxed and the object reconstructed. This may add a little overhead for some objects
 that don't have references to closures or any other data that has a custom serializer.
 
 Here is an example
@@ -184,32 +185,33 @@ class NumberPair {
 
 The above class always uses only integers in the serialized data array, so in this case the boxing can be avoided.
 
-If you own the class, you can add the `NoBox` attribute.
+If you own the class, you should add the `PreventBoxing` attribute.
 
 ```php
-use Opis\Closure\Attribute\NoBox;
+use Opis\Closure\Attribute\PreventBoxing;
 
-#[NoBox]
+#[PreventBoxing]
 class NumberPair {
  // ...
 }
 ```
 
-The other method involves using the `noBox` method, and can be used on any class.
+The other method involves using the `prevent_boxing()` function, and can be used on any class.
 
 ```php
-use Opis\Closure\Serializer;
 use Some\Vendor\SomeClass;
+use Other\Vendor\SomeOtherClass;
+use function Opis\Closure\prevent_boxing;
 
-Serializer::noBox(SomeClass::class);
+prevent_boxing(SomeClass::class, SomeOtherClass::class, ...);
 ```
 
 All objects that directly or indirectly have references to a closure or any boxed objects,
-must also be boxed.
+**must not** prevent boxing.
 {:.alert.alert-warning data-title="Important"}
 
-Below is an example of class that must be boxed because the array might contain an object that 
-needs boxing (such as closure).
+Below is an example of class that must not prevent boxing because the array might contain an object that 
+is boxed (such as closure).
 
 ```php
 class MustBeBoxed {
@@ -218,3 +220,6 @@ class MustBeBoxed {
     ) {}
 }
 ```
+
+By default, all non-internal objects are boxed. When an object has boxing prevented, **Opis Closure** will not know about
+it's serialized data.

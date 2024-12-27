@@ -10,11 +10,11 @@ description: Learn how to debug serialized closures
 error handlers like [whoops] without any special or supplemental configurations. 
 
 ```php
-use Opis\Closure\Serializer;
+use function Opis\Closure\{serialize, unserialize};
 
 // register whoops
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops = new \Whoops\Run();
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
 $whoops->register();
 
 $closure = function() {
@@ -22,7 +22,7 @@ $closure = function() {
 };
 
 // Unserialize a serialized closure
-$closure = Serializer::unserialize(Serializer::serialize($closure));
+$closure = unserialize(serialize($closure));
 
 // Call the closure to throw the exception
 $closure();
@@ -39,10 +39,10 @@ The `#trackme` directive provides the following information:
 - `Line` - the line where the closure can be located inside the File
 
 ```php
-use Opis\Closure\Serializer;
+use function Opis\Closure\{serialize, unserialize};
 
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops = new \Whoops\Run();
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
 $whoops->register();
 
 $closure = function() {
@@ -51,7 +51,7 @@ $closure = function() {
 };
 
 
-$closure = Serializer::unserialize(Serializer::serialize($closure));
+$closure = unserialize(serialize($closure));
 
 $closure();
 ```
@@ -59,6 +59,7 @@ $closure();
 [![Error 1][error2]][error2]
 
 [whoops]: https://github.com/filp/whoops "Whoops"
+{:rel="nofollow" target="_blank"}
 [error1]: /closure/assets/error1_4.png "Error 1" 
 {: .img-fluid }
 [error2]: /closure/assets/error2_4.png "Error 2" 

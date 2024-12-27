@@ -19,28 +19,28 @@ The simplest way of confirming data authenticity is by setting a secret key at i
 
 {% capture remote_server %}
 ```php
-use Opis\Closure\Serializer;
+use function Opis\Closure\{init, serialize};
 
 // Set secret key
-Serializer::init("secret-key");
+init("secret-key");
 
 // Here you can serialize closures
 $closure = function(){
    return "I'm a cryptographically signed closure";
 };
 
-push_to_server(Serializer::serialize($closure));
+push_to_server(serialize($closure));
 ```
 {% endcapture %}
 {% capture your_server%}
 ```php
-use Opis\Closure\Serializer;
+use function Opis\Closure\{init, unserialize};
 
 // Use the same secret key
-Serializer::init("secret-key");
+init("secret-key");
 
 // Here you can fetch closures from remote and unserialize them
-$closure = Serializer::unserialize(fetch_from_remote());
+$closure = unserialize(fetch_from_remote());
 
 //> I'm a cryptographically signed closure
 echo $closure();
@@ -60,11 +60,12 @@ with the same settings, is used both for serialization and unserialization.
 
 If you are unhappy with the default security provider, you can use your own by creating a class that implements
 the `Opis\Closure\Security\SecurityProviderInterface` interface and passing an instance of that 
-class at initialization or to `setSecurityProvider` method.
+class at initialization or to `set_security_provider()` function. To see the current security provider, 
+use `get_security_provider()` function.
 
 ```php
-use Opis\Closure\Serializer;
 use Opis\Closure\Security\SecurityProviderInterface;
+use function Opis\Closure\{init, set_security_provider, get_security_provider};
 
 class MySecurityProvider implements SecurityProviderInterface
 {
@@ -78,30 +79,30 @@ class MySecurityProvider implements SecurityProviderInterface
 }
 
 // Set at init
-Serializer::init(new MySecurityProvider);
+init(new MySecurityProvider());
 
-// Set anytime
-Serializer::setSecurityProvider(new MySecurityProvider);
+// Set anytime (use null to remove the security provider)
+set_security_provider(new MySecurityProvider());
 
 // Get current security provider
-$security = Serializer::getSecurityProvider();
+$security = get_security_provider();
 ```
 
 ## Detecting security errors
 
-To detect security errors you have to catch exceptions of class `Opis\Closure\Security\SecurityException`.
+To detect security errors you have to catch `Opis\Closure\Security\SecurityException`.
 
 ```php
-use Opis\Closure\Serializer;
 use Opis\Closure\Security\SecurityException;
+use function Opis\Closure\{init, unserialize};
 
-Serializer::init("my-secret-key");
+init("my-secret-key");
 
 // sample serialized data
 $serialized = "...";
 
 try {
-    $unserialized = Serializer::unserialize($serialized);
+    $unserialized = unserialize($serialized);
 } catch (SecurityException $e) {
     // this is a security error
 } catch (\Throwable $e) {
@@ -110,4 +111,4 @@ try {
 ```
 
 Keep in mind that if you don't use a security provider you cannot deserialize signed data,
-and if do use a security provider you cannot deserialize unsigned data.
+and if you do use a security provider you cannot deserialize unsigned data.

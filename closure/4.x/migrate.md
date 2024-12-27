@@ -13,45 +13,20 @@ The migration from v3 contains two parts:
 
 ## Migrating code
 
-Version 4 is a full rewrite of the library, so you'll have to use the new `Serializer` to serialize/unserialize data,
-instead of directly using PHP's serialize/unserialize. Also, you no longer have to wrap closures.
+- `Opis\Closure\SerializableClosure` **was removed** in v4; closures no longer need to be wrapped. Make sure you remove anything related to it, including but not limited to:
+  - new instance creation `new SerializableClosure(...)`
+  - closure extraction at unserialization using `SerializableClosure::getClosure()` method
+  - context related static calls: `SerializableClosure::from(...)`, `SerializableClosure::enterContext()`, `SerializableClosure::exitContext()`
+  - security related static calls: `SerializableClosure::setSecretKey()` and `SerializableClosure::addSecurityProvider()`
+  Read about [how to sign data](./security.html) in v4
+  - `SerializableClosure::createClosure()` can be replaced with `Opis\Closure\Serializer::createClosure()`
+- `Opis\Closure\ISecurityProvider` no longer exists, use `Opis\Closure\Security\SecurityProviderInterface` instead (new signature)
+- `Opis\Closure\SecurityProvider` was replaced by `Opis\Closure\Security\DefaultSecurityProvider`
+- `Opis\Closure\SecurityException` is now `Opis\Closure\Security\SecurityException`
+- `Opis\Closure\ReflectionClosure` has a new API
 
-{% capture new_way %}
-```php
-use Opis\Closure\Serializer;
-
-// Data to be serialized
-$data = function(){
-   return "I'm about to be serialized";
-};
-
-// Serialize
-$serialized = Serializer::serialize($data);
-
-// Unserialize
-$unserialized = Serializer::unserialize($serialized);
-```
-{% endcapture %}
-{% capture old_way%}
-```php
-use Opis\Closure\SerializableClosure;
-
-// Data to be serialized
-$data = function(){
-   return "I'm about to be serialized";
-};
-
-// We have to wrap the closure
-$wrapper = new SerializableClosure($data);
-
-// Serialize the wrapper
-$serialized = \serialize($wrapper);
-
-// Unserialize and extract the closure
-$unserialized = \unserialize($serialized)->getClosure();
-```
-{% endcapture %}
-{% include tabs.html 1="New - v4" 2="Old - v3" _1=new_way _2=old_way %}
+You should keep any calls to `Opis\Closure\serialize` and `Opis\Closure\unserialize` functions. If you didn't use the functions,
+you'll now have to use them instead of PHP's `\serialize()` and `\unserialize()`.
 
 ## Migrating data
 
@@ -66,38 +41,35 @@ You can only deserialize data from v3 and serialize it to v4, you cannot seriali
 First, to enable deserialization of data from v3 you have to be explicit at initialization.
 
 ```php
-use Opis\Closure\Serializer;
-
 // Set second param to true to enable v3 compatibility
-Serialize::init(null, true);
+\Opis\Closure\init(null, true);
 ```
 
 Second, if data in v3 used a security provider you have to use the same provider
-(you might need to migrate the of security provider code as well).
+(you might need to migrate the security provider code as well).
 If the security provider is the default one, you can pass the secret key at initialization.
 
 ```php
-use Opis\Closure\Serializer;
-
 // 1. Set the same secret key you used before
 // 2. Set second param to true to enable v3 compatibility
-Serialize::init("my-secret-key", true);
+\Opis\Closure\init("my-secret-key", true);
 ```
 
 ### Manual data migration
 
 If, for some reason, you want to use a different security provider for v4 than v3, then you have the option to
-unserialize data from v3 using `unserialize_v3` method. Also, if your v3 data doesn't contain a serialized closure then
-you'll have to use this method as well.
+unserialize data from v3 using `Opis\Closure\Serializer::unserialize_v3` method. 
+Also, if your v3 data doesn't contain a serialized closure then you'll have to use this method as well.
 
 You might also want create a script that migrates your data from v3 to v4 format using `unserialize_v3` and `serialize`.
 
 ```php
 use Opis\Closure\Serializer;
+use function Opis\Closure\{init, serialize};
 
 // 1. Set the v4 security provider (optional)
 // 2. You don't have to enable compatibility
-Serialize::init("my-v3-key");
+init("my-v3-key");
 
 // Some data from v3
 $v3_data = "...";
@@ -110,5 +82,5 @@ $unserialized = Serialize::unserialize_v3($v3_data, $security);
 
 // Once the data is deserialized, you can serialize it again,
 // but the format will be v4
-$serialized_in_v4 = Serializer::serialize($unserialized);
+$serialized_in_v4 = serialize($unserialized);
 ```
