@@ -25,7 +25,7 @@ The migration from v3 contains two parts:
 - `Opis\Closure\SecurityException` is now `Opis\Closure\Security\SecurityException`
 - `Opis\Closure\ReflectionClosure` has a new API
 
-You should keep any calls to `Opis\Closure\serialize` and `Opis\Closure\unserialize` functions. If you didn't use the functions,
+You should keep any calls to `Opis\Closure\serialize()` and `Opis\Closure\unserialize()` functions. If you didn't use the functions,
 you'll now have to use them instead of PHP's `\serialize()` and `\unserialize()`.
 
 ## Migrating data
@@ -58,14 +58,14 @@ If the security provider is the default one, you can pass the secret key at init
 ### Manual data migration
 
 If, for some reason, you want to use a different security provider for v4 than v3, then you have the option to
-unserialize data from v3 using `Opis\Closure\Serializer::unserialize_v3` method. 
+unserialize data from v3 using `Opis\Closure\v3_unserialize()` function. 
 Also, if your v3 data doesn't contain a serialized closure then you'll have to use this method as well.
 
-You might also want create a script that migrates your data from v3 to v4 format using `unserialize_v3` and `serialize`.
+You might also want to create a script that migrates your data from v3 to v4 format 
+using `Opis\Closure\v3_unserialize()` and `Opis\Closure\serialize()`.
 
 ```php
-use Opis\Closure\Serializer;
-use function Opis\Closure\{init, serialize};
+use function Opis\Closure\{init, serialize, v3_unserialize};
 
 // 1. Set the v4 security provider (optional)
 // 2. You don't have to enable compatibility
@@ -75,10 +75,10 @@ init("my-v3-key");
 $v3_data = "...";
 
 // If the data is not signed 
-$unserialized = Serialize::unserialize_v3($v3_data);
+$unserialized = v3_unserialize($v3_data);
 
 // If the data is signed, use a security provider object for v3
-$unserialized = Serialize::unserialize_v3($v3_data, $security);
+$unserialized = v3_unserialize($v3_data, $security);
 
 // Once the data is deserialized, you can serialize it again,
 // but the format will be v4
