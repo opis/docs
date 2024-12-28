@@ -3,14 +3,13 @@ layout: project
 library: closure
 version: 4.x
 title: About
-description: A mature and stable PHP library that can be used to serialize arbitrary data, including closures
+description: A mature and stable PHP library that can be used to serialize closures and arbitrary data
 lib: 
     name: opis/closure
     version: 4.0
 ---
 
-**Opis Closure** is a PHP library that allows you to serialize arbitrary data,
-including closures, without breaking a sweat.
+**Opis Closure** is a PHP library that allows you to serialize closures and arbitrary data.
 
 **The library's key features:**
 
