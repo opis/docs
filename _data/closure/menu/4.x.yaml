@@ -14,7 +14,7 @@
     - title: Object serialization
       url: "/closure/4.x/objects.html"
       description: Serialization of arbitrary objects
-    - title: Signing data
+    - title: Data signing
       url: "/closure/4.x/security.html"
       description: Learn how to cryptographically sign your serialized data
 
