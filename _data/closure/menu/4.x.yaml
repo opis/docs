@@ -1,0 +1,31 @@
+---
+- chapter:
+  pages:
+    - title: About
+      page_title: Opis Closure
+      url: "/closure/4.x/"
+      description: Installation, licensing and requirements
+    - title: Quick start
+      url: "/closure/4.x/serialize.html"
+      description: Learn how to serialize data
+
+- chapter: In-depth
+  pages:
+    - title: Object serialization
+      url: "/closure/4.x/objects.html"
+      description: Serialization of arbitrary objects
+    - title: Signing data
+      url: "/closure/4.x/security.html"
+      description: Learn how to cryptographically sign your serialized data
+
+- chapter: Good to know
+  pages:
+    - title: Caveats
+      url: "/closure/4.x/caveats.html"
+      description: A list of known limitations
+    - title: Debugging closures
+      url: "/closure/4.x/debug.html"
+      description: Learn how to debug serialized closures
+    - title: Migration guide
+      url: "/closure/4.x/migrate.html"
+      description: Learn how to migrate from previous version
