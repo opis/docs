@@ -6,7 +6,7 @@ canonical: /closure/
 ga: true
 project:
     title: Opis Closure
-    description: Serialize anything
+    description: Serialize closures, serialize anything
     docs_url: /closure/4.x/
     github: https://github.com/opis/closure
     artwork: closure

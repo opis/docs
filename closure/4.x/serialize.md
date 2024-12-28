@@ -11,34 +11,27 @@ description: Learn how to serialize and unserialize closures and other arbitrary
 This library provides an enhanced version of PHP's
 [`serialize`](https://www.php.net/manual/en/function.serialize.php){:rel="nofollow" target="_blank"} and 
 [`unserialize`](https://www.php.net/manual/en/function.unserialize.php){:rel="nofollow" target="_blank"} functions.
-
 It supports serializing arbitrary objects, arrays, closures, and enums, handles circular references, and provides an 
 API for [custom object serialization](./objects.html).
 
 ```php
 use function Opis\Closure\{serialize, unserialize};
 
-$data = [
-    "func" => fn() => "it works",
-];
+$closure = fn() => "it works";
 
-// serialize arbitrary data (including closures)
-$serialized = serialize($data);
+// serialize closure (or arbitrary data)
+$serialized = serialize($closure);
 
-// unserialize data
+// unserialize closure
 $unserialized = unserialize($serialized);
 
-// see the deserialized data
-var_dump($unserialized);
-
-// test if closure works
-var_dump($unserialized["func"]());
+echo $unserialized(); //> it works
 ```
 
 ## Data signing
 
 We often send serialized data to other services we control, and at deserialization, we want to ensure 
-that the data has not been tampered with and is safe to use. **Opis Closure provides** a straightforward 
+that the data has not been tampered with and is safe to use. **Opis Closure** provides a straightforward 
 way of signing data and verifying its integrity.
 
 ```php

@@ -94,7 +94,8 @@ It has the following signature:
  * @return array The serialized data
  */
 function (object $object): array;
-// note: you are free to replace object (first parameter) with the actual class name for type hinting
+// note: you are free to replace object (first parameter)
+// with the actual class name for type hinting
 ```
 
 ### Deserialization function
@@ -112,7 +113,8 @@ The function has the following signature:
  * @return object The deserialized object
  */
 function (array &$data, callable $solve, ReflectionClass $class): object;
-// note: you are free to replace object (return type) with the actual class name for type hinting
+// note: you are free to replace object (return type)
+// with the actual class name for type hinting
 ```
 
 The deserialization function receives as input a reference to the serialized array and a callback used to 
