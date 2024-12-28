@@ -19,7 +19,7 @@ The migration from v3 contains two parts:
   - context related static calls: `SerializableClosure::from(...)`, `SerializableClosure::enterContext()`, `SerializableClosure::exitContext()`
   - security related static calls: `SerializableClosure::setSecretKey()` and `SerializableClosure::addSecurityProvider()`
   Read about [how to sign data](./security.html) in v4
-  - `SerializableClosure::createClosure()` can be replaced with `Opis\Closure\Serializer::createClosure()`
+  - `SerializableClosure::createClosure()` can be replaced with `Opis\Closure\create_closure()`
 - `Opis\Closure\ISecurityProvider` no longer exists, use `Opis\Closure\Security\SecurityProviderInterface` instead (new signature)
 - `Opis\Closure\SecurityProvider` was replaced by `Opis\Closure\Security\DefaultSecurityProvider`
 - `Opis\Closure\SecurityException` is now `Opis\Closure\Security\SecurityException`
