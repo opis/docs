@@ -3,16 +3,16 @@ layout: project
 library: closure
 version: 4.x
 title: Quick start
-description: Learn how to serialize and unserialize arbitrary data
+description: Learn how to serialize and unserialize closures and other arbitrary data
 ---
 
-## Serialize anything
+## Serialize closures, serialize anything
 
-This library is to be used as a replacement for PHP's 
-[`serialize`](https://www.php.net/manual/en/function.serialize.php){:rel="nofollow" target="_blank"} & 
+This library provides an enhanced version of PHP's
+[`serialize`](https://www.php.net/manual/en/function.serialize.php){:rel="nofollow" target="_blank"} and 
 [`unserialize`](https://www.php.net/manual/en/function.unserialize.php){:rel="nofollow" target="_blank"} functions.
 
-It supports serializing arbitrary objects, arrays, closures, enums, it handles circular references, and also provides an 
+It supports serializing arbitrary objects, arrays, closures, and enums, handles circular references, and provides an 
 API for [custom object serialization](./objects.html).
 
 ```php
@@ -35,12 +35,11 @@ var_dump($unserialized);
 var_dump($unserialized["func"]());
 ```
 
-## Signing data
+## Data signing
 
-We often send serialized data to other services we control,
-and at deserialization we want to make sure the data is safe to use.
-Signing data is very easy with **Opis Closure**, just use a security provider
-at initialization.
+We often send serialized data to other services we control, and at deserialization, we want to ensure 
+that the data has not been tampered with and is safe to use. **Opis Closure provides** a straightforward 
+way of signing data and verifying its integrity.
 
 ```php
 use Opis\Closure\Security\{
@@ -67,4 +66,4 @@ init(new class() implements SecurityProviderInterface {
 });
 ```
 
-Read more about [signing data](./security.html).
+Read more about [data signing](./security.html).
