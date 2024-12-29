@@ -17,6 +17,8 @@ on objects, as shown in [this PHP example](#php-example).
 You can disable it by setting the [`allowDefaults` option](php-loader.html#parser-options) to `false`.
 {:.alert.alert-danger data-title="Important"}
 
+The default value will be set only when is part of the property schema (`$ref` won't work).
+
 {% capture schema %}
 ```json
 {
@@ -38,7 +40,25 @@ You can disable it by setting the [`allowDefaults` option](php-loader.html#parse
 | `{"prop1": 5}`{:.language-json} | *invalid*{:.text-danger.text-normal} - not a string|
 {:.table}
 {% endcapture %}
-{% include tabs.html 1="Schema" 2="Examples" _1=schema _2=examples %}
+{% capture wontwork %}
+```json
+{
+    "type": "object",
+    "properties": {
+        "prop1": {
+            "$ref": "#/$defs/str"
+        }
+    },
+    "$defs": {
+        "str": {
+            "type": "string",
+            "default": "test"
+        }
+    }
+}
+```
+{% endcapture %}
+{% include tabs.html 1="Schema" 2="Examples" 3="Won't work" _1=schema _2=examples _3=wontwork%}
 
 ## PHP Example
 
@@ -138,4 +158,4 @@ The fun begins when you have to add the zip property to the address: add it into
 then find where you have to change in PHP files just to add the same object. 
 We hate that, that's way we set the object's missing properties to default values (if `default` keyword is present).
 
-If you don't want this behaviour just disable it by setting the [`allowDefaults` option](php-loader.html#parser-options) to `false`.
+If you don't want this behavior just disable it by setting the [`allowDefaults` option](php-loader.html#parser-options) to `false`.

@@ -8,6 +8,9 @@
     - title: Quick start
       url: "/json-schema/2.x/quick-start.html"
       description: Some quick examples about how to use Opis JSON Schema
+    - title: Examples
+      url: "/json-schema/2.x/examples.html"
+      description: Detailed examples using Opis JSON Schema
       
 - chapter: The Basics
   pages:
@@ -71,19 +74,22 @@
   pages:
     - title: Variables
       url: "/json-schema/2.x/variables.html"
-      description: "$vars keyword"
+      description: $vars keyword
     - title: Filters
       url: "/json-schema/2.x/filters.html"
-      description: "$filters keyword"
+      description: $filters keyword
+    - title: Custom errors
+      url: "/json-schema/2.x/errors.html"
+      description: $error keyword
     - title: Mappers
       url: "/json-schema/2.x/mappers.html"
-      description: "$map keyword"
+      description: $map keyword
     - title: Slots
       url: "/json-schema/2.x/slots.html"
-      description: "Schema composition"
+      description: Schema composition
     - title: Pragma
       url: "/json-schema/2.x/pragma.html"
-      description: "Pragma options"
+      description: Pragma options
     - title: Data
       url: "/json-schema/2.x/data-keyword.html"
       description: Support for $data keyword

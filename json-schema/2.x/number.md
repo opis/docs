@@ -205,7 +205,7 @@ Valid if the number is lower than `10.5`.
 {% include drafts.html v="all" %}
 
 A number is valid against this keyword if the division between the
-number and the the value of this keyword results in an integer.
+number and the value of this keyword results in an integer.
 Value of this keyword must be a strictly positive number (zero is not allowed).
 
 {% capture schema %}

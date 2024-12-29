@@ -89,6 +89,9 @@ if ($result->isValid()) {
 
 ## format method
 
+This method will display custom errors set with [`$error` keyword](errors.html) inside schemas.
+{:.alert.alert-info data-title="Remember"}
+
 ```php
 // default
 $print($formatter->format($error, false));
