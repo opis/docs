@@ -180,7 +180,7 @@ function to decode it.
 {:.alert.alert-info}
 
 If you want to validate data from `$_POST` you can use a helper method to automatically convert
-associative arrays to objects. However, we cannot distinguish an indexed array from an associative array
+associative arrays to objects - [see example](examples.html#validating-form-data). However, we cannot distinguish an indexed array from an associative array
 when the array is empty, so you might need to manually apply a cast to object.
 
 ```php

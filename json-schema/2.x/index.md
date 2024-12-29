@@ -17,6 +17,7 @@ whether they are configuration files or a set of data sent to an RESTful API end
 ## Features
 
 - Fast validation
+- Support for custom [errors](errors.html)
 - Support for custom [filters](filters.html)
 - Supports relative and absolute [json pointers](pointers.html)
 - Support for local and global [variables](variables.html)
