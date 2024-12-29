@@ -7,6 +7,9 @@ description: opis json schema custom errors
 keywords: opis, json, schema, error
 ---
 
+To get the custom errors you should use [`ErrorFormatter::format()` method](php-error-formatter.html#format-method).
+{:.alert.alert-info data-title="Important"}
+
 ## Adding custom error messages
 
 To add custom errors for keywords you should use `$error` as an object with the same properties as keyword names, 

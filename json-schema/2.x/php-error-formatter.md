@@ -7,9 +7,6 @@ description: the opis json schema error formatter
 keywords: opis, json, schema, error, format
 ---
 
-You can set custom error messages inside schema using [`$error`](errors.html).
-{:.alert.alert-info data-title="Remember"}
-
 We provide several helpers for formatting your errors. 
 All of them can be accessed through the `Opis\JsonSchema\Errors\ErrorFormatter` class.
 
@@ -91,6 +88,9 @@ if ($result->isValid()) {
 ```
 
 ## format method
+
+This method will display custom errors set with [`$error` keyword](errors.html) inside schemas.
+{:.alert.alert-info data-title="Remember"}
 
 ```php
 // default

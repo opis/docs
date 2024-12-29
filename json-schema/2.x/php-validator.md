@@ -15,6 +15,16 @@ use Opis\JsonSchema\Validator;
 $validator = new Validator();
 ```
 
+If you don't need custom features (such as filters), you can use `Opis\JsonSchema\CompliantValidator` as validator.
+This ensures that you have enabled **only** the options officially supported by json-schema standard.
+To handpick what features you want enabled, see [parser options](php-loader.html#parser-options).
+
+```php
+use Opis\JsonSchema\CompliantValidator;
+
+$validator = new CompliantValidator();
+```
+
 ## Data validation
 
 To validate some data, we can use the `validate` method, which has the following signature:
@@ -264,6 +274,69 @@ Example output
     ]
 }
 ```
+
+## Stop at first error
+
+When validating objects the process stops at first error. This can be changed since v2.4.0.
+
+```php
+$validator->setStopAtFirstError(false);
+```
+
+Here is an example:
+
+```php
+use Opis\JsonSchema\{
+    Validator,
+    ValidationResult,
+    Errors\ErrorFormatter,
+};
+
+$schema = <<<'JSON'
+{
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "string",
+      "minLength": 10,
+      "pattern": "^a"
+    }
+  }
+}
+JSON;
+
+$data = (object)[
+    "value" => "b",
+];
+
+$validator = new Validator();
+$validator->setMaxErrors(10);
+$validator->setStopAtFirstError(false);
+
+/** @var ValidationResult $result */
+$result = $validator->validate($data, $schema);
+
+if ($result->isValid()) {
+    echo "Valid";
+} else {
+    echo json_encode(
+        (new ErrorFormatter())->format($result->error()),
+        JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
+    );
+}
+```
+
+The above example will output two errors for the same property.
+
+```json
+{
+    "/value": [
+        "Minimum string length is 10, found 1",
+        "The string should match pattern: ^a"
+    ]
+}
+```
+
 
 ## Exceptions
 

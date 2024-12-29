@@ -68,7 +68,7 @@ Ok, let's see what happens there. The confusing thing is the value of the
 That's an URI fragment (starts with `#`), and the rest of the string after
 the `#` represents a [JSON pointer](pointers.html). JSON pointers are
 covered in the [next](pointers.html) chapter, but we still explain
- the behaviour in a few words, using our example.
+ the behavior in a few words, using our example.
 
 Consider this JSON pointer `/$defs/custom-email`. Because the
 pointer starts with `/` (slash) we know that we begin at the root of

@@ -43,12 +43,14 @@ $data = Helper::toJSON($_POST);
 
 // Create a new validator
 $validator = new Validator();
+$validator->setMaxErrors(10);
+$validator->setStopAtFirstError(false);
 
 /** @var ValidationResult $result */
 $result = $validator->validate($data, $schema);
 
 if ($result->isValid()) {
-    echo "Valid", PHP_EOL;
+    echo "Valid";
 } else {
     // Print errors
     print_r((new ErrorFormatter())->format($result->error()));
@@ -61,8 +63,8 @@ when the array is empty, so you might need to manually apply a cast to object if
 to be treated as an empty object.
 {:.alert.alert-warning data-title="Important"}
 
-Due to the nature of JsonSchema, you cannot get all errors for a form, usually the validation will stop at first error
-for performance reasons. See [max errors](php-validator.html#max-errors) for more details.
+By default, Opis JsonSchema stops at first error, to change this behavior see [max errors](php-validator.html#max-errors)
+nd [stop at first error](php-validator.html#stop-at-first-error) for more details.
 {:.alert.alert-info data-title="Info"}
 
 ## Custom error messages
