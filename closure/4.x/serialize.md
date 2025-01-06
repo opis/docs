@@ -11,8 +11,8 @@ description: Learn how to serialize and unserialize closures and other arbitrary
 This library provides an enhanced version of PHP's
 [`serialize`](https://www.php.net/manual/en/function.serialize.php){:rel="nofollow" target="_blank"} and 
 [`unserialize`](https://www.php.net/manual/en/function.unserialize.php){:rel="nofollow" target="_blank"} functions.
-It supports serializing arbitrary objects, arrays, closures, and enums, handles circular references, and provides an 
-API for [custom object serialization](./objects.html).
+It supports serializing arbitrary objects, arrays, closures, anonymous classes, and enums, handles circular references, 
+and provides an API for [custom object serialization](./objects.html).
 
 ```php
 use function Opis\Closure\{serialize, unserialize};
@@ -26,6 +26,33 @@ $serialized = serialize($closure);
 $unserialized = unserialize($serialized);
 
 echo $unserialized(); //> it works
+```
+
+Anonymous classes can now be serialized, and closures bound to them work as expected.
+
+```php
+use function Opis\Closure\{serialize, unserialize};
+
+// create an anonymous class
+$anonymous = new class("it works") {
+    public function __construct(private string $message) {}
+    
+    public function getMessage(): string {
+        return $this->message;
+    }
+    
+    public function getClosure(): \Closure {
+        return fn() => $this->message;
+    }
+};
+
+// serialize anonymous classes
+$object = unserialize(serialize($anonymous));
+echo $object->getMessage(); // it works
+
+// closures bound to anonymous classes just work
+$closure = unserialize(serialize($anonymous->getClosure()));
+echo $closure(); // it works
 ```
 
 ## Data signing

@@ -134,10 +134,12 @@ function(?object $object, mixed &$value = null): void;
 
 ## Default object serializers
 
-By default, we have custom serializers for the following PHP classes: 
+By default, we have custom serializers for the following PHP classes:
+
 - [enum](https://www.php.net/manual/en/language.types.enumerations.php){:rel="nofollow" target="_blank"} (cannot be overwritten)
 - [stdClass](https://www.php.net/manual/en/class.stdclass.php){:rel="nofollow" target="_blank"} (cannot be overwritten)
 - [Closure](https://www.php.net/manual/en/class.closure.php){:rel="nofollow" target="_blank"} (cannot be overwritten)
+- [anonymous classes](https://www.php.net/manual/en/language.oop5.anonymous.php){:rel="nofollow" target="_blank"} (cannot be overwritten)
 - [ArrayObject](https://www.php.net/manual/en/class.arrayobject.php){:rel="nofollow" target="_blank"}
 - [SplObjectStorage](https://www.php.net/manual/en/class.splobjectstorage.php){:rel="nofollow" target="_blank"}
 - [SplFixedArray](https://www.php.net/manual/en/class.splfixedarray.php){:rel="nofollow" target="_blank"}

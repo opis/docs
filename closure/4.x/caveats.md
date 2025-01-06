@@ -19,12 +19,20 @@ on the same line.
 $first = function() {return "1st";}; $second = function() {return "2nd";};
 // This will also NOT work!
 $first = fn() => "1st"; $second = fn() => "2nd";
+// This will NOT work, either.
+$first = fn() => fn() => "2nd";
 
 // This will work!
 $first = function() {return "1st";};
 $second = function() {return "2nd";};
 ```
 
-## Anonymous classes
+## Multiple anonymous classes per line
 
-Anonymous classes is something we want to support in the near future, but for now they cannot be serialized.
+```php
+// This will not work
+$first = new class() extends A {}; $second = new class() extends B {};
+```
+
+In the future, we plan to implement a heuristic to select the appropriate anonymous class. 
+Until then, this should have minimal impact on most codebases.
