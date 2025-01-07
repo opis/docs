@@ -28,7 +28,7 @@ $unserialized = unserialize($serialized);
 echo $unserialized(); //> it works
 ```
 
-Anonymous classes can now be serialized, and closures bound to them work as expected.
+You can serialize anonymous class instances and closures bound to these instances.
 
 ```php
 use function Opis\Closure\{serialize, unserialize};
