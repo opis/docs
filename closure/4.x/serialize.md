@@ -11,7 +11,7 @@ description: Learn how to serialize and unserialize closures and other arbitrary
 This library provides an enhanced version of PHP's
 [`serialize`](https://www.php.net/manual/en/function.serialize.php){:rel="nofollow" target="_blank"} and 
 [`unserialize`](https://www.php.net/manual/en/function.unserialize.php){:rel="nofollow" target="_blank"} functions.
-It supports serializing arbitrary objects, arrays, closures, anonymous classes, and enums, handles circular references, 
+It supports serializing arbitrary objects (arrays, closures, anonymous classes, and enums),  handles circular references, 
 and provides an API for [custom object serialization](./objects.html).
 
 ```php
