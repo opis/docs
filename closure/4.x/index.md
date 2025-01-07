@@ -6,10 +6,14 @@ title: About
 description: A mature and stable PHP library that can be used to serialize closures and arbitrary data
 lib: 
     name: opis/closure
-    version: 4.0
+    version: 4.2
 ---
 
-**Opis Closure** is a PHP library that allows you to serialize closures and arbitrary data.
+**Opis Closure** is a PHP library that allows you to serialize closures, anonymous classes or any other arbitrary data.
+
+Starting with version 4.2, **Opis Closure** supports serialization of anonymous classes.
+If you encounter any bugs, please [report them on GitHub](https://github.com/opis/closure){:rel="nofollow" target="_blank"}.
+{:.alert.alert-info data-title="Note"}
 
 **The library's key features:**
 
@@ -18,12 +22,14 @@ lib:
 - Custom serialization/deserialization integrations
 - Implementation for SPL Classes (ArrayObject, SplObjectStorage, etc.)
 - Supports cryptographically signed data
+- Serialize anonymous classes
 - Serialize closures (anonymous functions)
   - PHP 8+ syntax
   - namespace and imports
   - attributes, parameter types, return type
+  - readonly properties
   - use variables (including self-references)
-  - bound object (`$this`) and scope
+  - bound object (`$this`) and scope (including anonymous classes)
   - static and short closures
   - anonymous classes inside closures
   - magic constants like `__FILE__`, `__DIR__`, `__LINE__`, `__NAMESPACE__`, `__CLASS__`,
