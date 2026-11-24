@@ -10,6 +10,7 @@ keywords: opis, string, multibyte, unicode, utf-8, code points
 ## getCharFromCodePoint
 
 Returns the string associated with the code point.
+If the code point is invalid, an empty string is returned.
 
 **signature**
 
@@ -42,13 +43,18 @@ public static function
 
 ## getStringFromCodePoints
 
-Converts all code points to chars and returns the resulted string. Invalid code points are ignored.
+Converts all code points to chars and returns the resulted string. 
+Invalid code points are handled according to `$invalid` parameter (since v2.2.0):
+- `UnicodeString::INVALID_IGNORE` - ignores invalid code points (default)
+- `UnicodeString::INVALID_SUBSTITUTE` - replaces invalid code points with `U+FFFD`
+- `UnicodeString::INVALID_THROW` - throws `InvalidCodePointException` when an invalid code point is found
 
 **signature**
 
 ```php
 public static function 
-    getStringFromCodePoints(array $codes, int $mode = self::KEEP_CASE): string
+    getStringFromCodePoints(array $codes, int $mode = self::KEEP_CASE,
+                            int $invalid = self::INVALID_IGNORE): string
 ```
 
 ## getMappedCodePoints
